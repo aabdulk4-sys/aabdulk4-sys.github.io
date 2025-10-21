@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Street Kuality | Car Photography Hobby</title>
+  
+  <!-- Embedded Stylesheet -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #111;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #e50914;
+      color: #fff;
+      padding: 1rem;
+    }
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ffd700;
+    }
+    main section {
+      display: none;
+      padding: 2rem;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    main section.active {
+      display: block;
+    }
+    figure {
+      margin: 2rem auto;
+      max-width: 500px;
+    }
+    figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    figcaption {
+      font-style: italic;
+      color: #aaa;
+    }
+    footer {
+      background-color: #e50914;
+      color: white;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Fade animation */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Street Kuality 🚗 — The Art of Car Photography</h1>
+    <nav>
+      <a href="#" onclick="showSection('what')">🏁 What</a> ✦
+      <a href="#" onclick="showSection('who')">📸 Who</a> ✦
+      <a href="#" onclick="showSection('when')">🕓 When</a> ✦
+      <a href="#" onclick="showSection('where')">📍 Where</a> ✦
+      <a href="#" onclick="showSection('how')">⚙️ How</a> ✦
+      <a href="#" onclick="showSection('why')">💡 Why</a> ✦
+      <a href="#" onclick="showSection('ai')">🤖 AI Prompts</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- WHAT -->
+    <section id="what" class="active">
+      <h2>What is Car Photography?</h2>
+      <p>Car photography is more than capturing a vehicle—it’s about emotion, reflections, and the environment. Each photo tells a story of design, speed, and art.</p>
+      <figure>
+        <img src="images/what.jpg" alt="Red BMW under neon lights">
+        <figcaption>AI-generated image of a BMW parked at night under neon lights.</figcaption>
+      </figure>
+      <p><em>AI prompt used: “Generate a photorealistic image of a red BMW M2 under neon street lights, cinematic night shot, 35mm lens.”</em></p>
+      <table border="1" align="center" cellpadding="5">
+        <tr><th>Genre</th><th>Lighting Style</th><th>Popular Lens</th></tr>
+        <tr><td>Urban</td><td>Artificial / Neon</td><td>35mm</td></tr>
+        <tr><td>Track</td><td>Natural / Daylight</td><td>85mm</td></tr>
+      </table>
+    </section>
+
+    <!-- WHO -->
+    <section id="who">
+      <h2>Who Are the Enthusiasts?</h2>
+      <p>Street Kuality represents a collective of car lovers and photographers dedicated to showing the lifestyle behind the wheel.</p>
+      <figure>
+        <img src="images/who.jpg" alt="Photographer crouching with camera near car">
+        <figcaption>Capturing motion blur at night meets—by SK Media.</figcaption>
+      </figure>
+      <p><em>AI prompt used: “Night car meet with photographer capturing long exposure light trails.”</em></p>
+      <ul>
+        <li>Photographers exploring reflections & light trails</li>
+        <li>Car owners showing passion through aesthetics</li>
+        <li>Fans documenting culture & connection</li>
+      </ul>
+    </section>
+
+    <!-- WHEN -->
+    <section id="when">
+      <h2>When Are the Best Times?</h2>
+      <p>Golden hour and late-night city lights are ideal. Rainy days bring reflections and creative light play.</p>
+      <figure>
+        <img src="images/when.jpg" alt="BMW with reflections after rain">
+        <figcaption>Reflections after rain—perfect timing for texture and depth.</figcaption>
+      </figure>
+      <p><em>AI prompt: “Cinematic BMW photo on wet asphalt reflecting city lights, low angle.”</em></p>
+      <table border="1" align="center">
+        <tr><th>Condition</th><th>Time</th></tr>
+        <tr><td>Golden Hour</td><td>6:00–8:00 AM / PM</td></tr>
+        <tr><td>Rainy Night</td><td>After 9:00 PM</td></tr>
+      </table>
+    </section>
+
+    <!-- WHERE -->
+    <section id="where">
+      <h2>Where to Capture the Best Shots?</h2>
+      <p>Charlotte skyline, parking decks, and mountain roads all offer unique compositions.</p>
+      <figure>
+        <img src="images/where.jpg" alt="BMW in uptown Charlotte">
+        <figcaption>Downtown Charlotte car photo by SK Media.</figcaption>
+      </figure>
+      <p><em>AI prompt: “Black BMW under city skyline with bokeh lights, twilight.”</em></p>
+      <ul>
+        <li>Uptown Charlotte — reflections and lights</li>
+        <li>Blue Ridge Parkway — scenic curves</li>
+        <li>Empty decks — minimalist backdrops</li>
+      </ul>
+    </section>
+
+    <!-- HOW -->
+    <section id="how">
+      <h2>How to Master Car Photography?</h2>
+      <p>Start with manual mode, experiment with aperture, and focus on framing reflections creatively.</p>
+      <figure>
+        <img src="images/how.jpg" alt="Photographer editing car photo on laptop">
+        <figcaption>Post-production is half the craft.</figcaption>
+      </figure>
+      <p><em>AI prompt: “Car photographer editing in Lightroom with car reflection visible.”</em></p>
+      <ol>
+        <li>Use a tripod for long exposures</li>
+        <li>Shoot in RAW for flexibility</li>
+        <li>Edit color tones carefully</li>
+      </ol>
+    </section>
+
+    <!-- WHY -->
+    <section id="why">
+      <h2>Why Street Kuality?</h2>
+      <p>Because cars are more than machines—they’re expressions of personality, speed, and design. SK captures that identity.</p>
+      <figure>
+        <img src="images/why.jpg" alt="Car photos collage">
+        <figcaption>Street Kuality: every car tells a story.</figcaption>
+      </figure>
+      <p><em>AI prompt: “Collage of urban car photography moments in cohesive lighting.”</em></p>
+      <blockquote>“Photography freezes time—car culture lives forever.”</blockquote>
+    </section>
+
+    <!-- AI PROMPTS -->
+    <section id="ai">
+      <h2>AI Prompts Used</h2>
+      <p>Model: <strong>ChatGPT + DALL·E 3</strong></p>
+      <ul style="text-align:left; display:inline-block;">
+        <li>"Red BMW M2 under neon street lights, cinematic night shot, 35mm lens"</li>
+        <li>"Night car meet with photographer capturing long exposure light trails"</li>
+        <li>"Cinematic BMW photo on wet asphalt reflecting city lights, low angle"</li>
+        <li>"Black BMW under city skyline with bokeh lights, twilight"</li>
+        <li>"Car photographer editing in Lightroom with car reflection visible"</li>
+        <li>"Collage of urban car photography moments in cohesive lighting"</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Designed by <a href="../abdulkareementerprises.com/index.html">Ambitious Antelope Web Design</a> ©2025</p>
+    <p>
+      <a href="https://validator.w3.org/">HTML</a> |
+      <a href="https://jigsaw.w3.org/css-validator/">CSS</a> |
+      <a href="https://wave.webaim.org/">Accessibility</a>
+    </p>
+  </footer>
+
+  <!-- JS to toggle sections -->
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('main section');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
