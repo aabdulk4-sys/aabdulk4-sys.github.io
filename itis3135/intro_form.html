@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction Form - Ayah AbduKareem</title>
+  <script src="scripts/introduction.js" defer></script>
+</head>
+<body>
+  <header id="header"></header>
+  <main>
+    <h2>Introduction Form</h2>
+    <h3>Please submit the form below.</h3>
+
+    <form id="introForm">
+      <fieldset>
+        <legend>Basic Info</legend>
+        <label>First Name: <input type="text" id="firstName" value="Ayah" required></label><br>
+        <label>Middle Name: <input type="text" id="middleName" placeholder="Optional"></label><br>
+        <label>Nickname: <input type="text" id="nickname" placeholder="Optional"></label><br>
+        <label>Last Name: <input type="text" id="lastName" value="AbduKareem" required></label><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mascot & Image</legend>
+        <label>Adjective: <input type="text" id="mascotAdj" value="Ambitious" required></label><br>
+        <label>Animal: <input type="text" id="mascotAnimal" value="Antelope" required></label><br>
+        <label>Divider: <input type="text" id="divider" value="♥" required></label><br>
+        <label>Image: <input type="file" id="photo" accept="image/*"></label><br>
+        <label>Caption: <input type="text" id="caption" value="Photo of Ayah enjoying design work"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Personal Info</legend>
+        <label>Personal Statement:<br>
+          <textarea id="statement" rows="3" required>I'm a Computer Science major at UNC Charlotte...</textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Courses</legend>
+        <div id="coursesContainer"></div>
+        <button type="button" id="addCourseBtn">Add Course</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Quote</legend>
+        <label>Favorite Quote:<br><input type="text" id="quote" value="Consistency creates trust."></label><br>
+        <label>Author:<br><input type="text" id="author" value="Jon Gordon"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Links</legend>
+        <label>Link 1: <input type="url" id="link1" value="https://linkedin.com/in/ayah"></label><br>
+        <label>Link 2: <input type="url" id="link2" value="https://github.com/aabdulk4-sys"></label>
+      </fieldset>
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+      <button type="button" id="clearForm">Clear</button>
+    </form>
+  </main>
+  <footer id="footer"></footer>
+</body>
+</html>
