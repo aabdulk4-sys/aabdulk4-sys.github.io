@@ -3,153 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Introduction Form | Ayah Abdulkareem</title>
-
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-
-    header, footer {
-      background-color: #1a5276;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    h1, h2 {
-      margin: 0.5rem 0;
-      font-family: "Montserrat", sans-serif;
-    }
-
-    main {
-      width: 90%;
-      max-width: 1000px;
-      margin: 2rem auto;
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    label {
-      font-weight: bold;
-      color: #117a65;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.6rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    button {
-      background-color: #117a65;
-      color: white;
-      border: none;
-      padding: 0.7rem 1rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #148f77;
-    }
-
-    #output {
-      display: none;
-    }
-
-    figure {
-      text-align: center;
-    }
-
-    figcaption {
-      font-style: italic;
-      color: #117a65;
-    }
-
-    footer a {
-      color: #aed6f1;
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Ayah Abdulkareem | Introduction Form</title>
+  <link rel="stylesheet" href="styles/default.css">
+  <script src="scripts/introduction.js" defer></script>
 </head>
-
 <body>
-  <header>
-    <h1>Ayah A. Abdulkareem</h1>
-    <h2>Introduction Form</h2>
-  </header>
+  <div data-include="components/header.html"></div>
 
   <main>
+    <h2>Introduction Form</h2>
     <h3>Please submit the form below.</h3>
+
     <form id="introForm">
-      <label>First Name: <input type="text" id="firstName" value="Ayah" required></label>
-      <label>Middle Name: <input type="text" id="middleName" value="A." placeholder="Optional"></label>
-      <label>Last Name: <input type="text" id="lastName" value="Abdulkareem" required></label>
-      <label>Preferred Name: <input type="text" id="nickname" value="Ambitious Antelope"></label>
-      <label>Personal Statement: <textarea id="statement" required>I enjoy spending time with my friends and family, and I love traveling and photography, especially car photography.</textarea></label>
-      <label>Personal Background: <textarea id="personal" required>Originally from Iraq, moved to Jordan, and then Charlotte at age 5. I speak Arabic fluently but mainly use it at home.</textarea></label>
-      <label>Professional Background: <textarea id="professional" required>Worked as a Director at Chick-fil-A for 3 years, now Events Manager at Rally.</textarea></label>
-      <label>Academic Background: <textarea id="academic" required>Senior, Computer Science major, Class of 2025.</textarea></label>
-      <label>Primary Computer: <textarea id="computer">Apple laptop running macOS, primarily work at home or on campus.</textarea></label>
+      <fieldset>
+        <legend>Basic Information</legend>
+        <label>First Name: <input type="text" name="firstName" value="Ayah" placeholder="Enter your first name" required></label><br>
+        <label>Middle Name/Initial: <input type="text" name="middleName" placeholder="Optional"></label><br>
+        <label>Nickname/Preferred Name: <input type="text" name="nickname" placeholder="Optional"></label><br>
+        <label>Last Name: <input type="text" name="lastName" value="Abdulkareem" placeholder="Enter your last name" required></label><br>
+      </fieldset>
 
-      <h3>Courses</h3>
-      <div id="courses">
-        <div class="course">
-          <label>Department: <input type="text" value="ITIS" required></label>
-          <label>Number: <input type="text" value="4350" required></label>
-          <label>Name: <input type="text" value="Design Prototyping" required></label>
-          <label>Reason: <input type="text" value="Required course; will teach me how to sketch and prototype on paper."></label>
+      <fieldset>
+        <legend>Personal Acknowledgment</legend>
+        <label>Acknowledgment Statement: 
+          <input type="text" name="ackStatement" value="I acknowledge this is my work" required>
+        </label><br>
+        <label>Acknowledgment Date: 
+          <input type="date" name="ackDate" value="2025-10-26" required>
+        </label><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mascot & Symbol</legend>
+        <label>Mascot Adjective: 
+          <input type="text" name="mascotAdj" value="Ambitious" required>
+        </label><br>
+        <label>Mascot Animal: 
+          <input type="text" name="mascotAnimal" value="Antelope" required>
+        </label><br>
+        <label>Divider Symbol: 
+          <input type="text" name="divider" value="|" placeholder="|, ~, ♥️, etc." required>
+        </label><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Profile Picture</legend>
+        <label>Upload Picture: 
+          <input type="file" name="profilePic" accept="image/*">
+        </label><br>
+        <img id="preview" src="images/ayah_mirror.jpg" alt="Default Profile Picture" width="200"><br>
+        <label>Picture Caption: 
+          <input type="text" name="picCaption" value="Post-hired mirror picture." required>
+        </label><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Personal Statement</legend>
+        <textarea name="statement" rows="4" required>Hi, my name is Ayah. I’m a senior majoring in Computer Science with a concentration in Human Computer Interaction. I enjoy spending time with my friends and family, and I love traveling and photography, especially car photography.</textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>7 Main Bullets</legend>
+        <input type="text" name="bullet1" value="Originally from Iraq, moved to Jordan, and then Charlotte at age 5.">
+        <input type="text" name="bullet2" value="Speak Arabic fluently but mainly use it at home.">
+        <input type="text" name="bullet3" value="Worked as a Director at Chick-fil-A for 3 years.">
+        <input type="text" name="bullet4" value="Now Events Manager at Rally.">
+        <input type="text" name="bullet5" value="Senior, Computer Science major, Class of 2025.">
+        <input type="text" name="bullet6" value="Apple laptop running macOS.">
+        <input type="text" name="bullet7" value="Primarily work at home or on campus.">
+      </fieldset>
+
+      <fieldset>
+        <legend>Courses and Reasons</legend>
+        <div id="courses">
+          <div class="course">
+            <input type="text" name="dept" value="ITIS" placeholder="Dept" required>
+            <input type="text" name="number" value="4350" placeholder="Number" required>
+            <input type="text" name="name" value="Design Prototyping" placeholder="Course Name" required>
+            <input type="text" name="reason" value="Required course; will teach me how to sketch and prototype on paper." placeholder="Reason" required>
+          </div>
+          <div class="course">
+            <input type="text" name="dept" value="ITIS" placeholder="Dept" required>
+            <input type="text" name="number" value="3135" placeholder="Number" required>
+            <input type="text" name="name" value="Front-End Web Application Development" placeholder="Course Name" required>
+            <input type="text" name="reason" value="Required course; will teach me about web applications." placeholder="Reason" required>
+          </div>
+          <div class="course">
+            <input type="text" name="dept" value="ITIS" placeholder="Dept" required>
+            <input type="text" name="number" value="3130" placeholder="Number" required>
+            <input type="text" name="name" value="Introduction to Human-Centered Computing" placeholder="Course Name" required>
+            <input type="text" name="reason" value="Required course; will teach me how to prioritize user needs, experiences, and ethics." placeholder="Reason" required>
+          </div>
         </div>
-      </div>
-      <button type="button" id="addCourse">Add Another Course</button>
+        <button type="button" id="addCourse">Add Another Course</button>
+      </fieldset>
 
-      <label>Quote: <input type="text" id="quote" value="If you expect disappointment, then you can never really get disappointed."></label>
-      <label>Quote Author: <input type="text" id="author" value="MJ (Spider-Man: No Way Home)"></label>
+      <fieldset>
+        <legend>Quote</legend>
+        <label>Quote: 
+          <input type="text" name="quote" value="If you expect disappointment, then you can never really get disappointed." required>
+        </label><br>
+        <label>Quote Author: 
+          <input type="text" name="quoteAuthor" value="MJ (Spider-Man: No Way Home)" required>
+        </label>
+      </fieldset>
 
-      <label>Picture Upload: <input type="file" id="photo"></label>
-      <label>Picture Caption: <input type="text" id="caption" value="Post-hired mirror picture."></label>
+      <fieldset>
+        <legend>Optional Fun</legend>
+        <label>Funny Thing: 
+          <input type="text" name="funnyThing" placeholder="Optional">
+        </label><br>
+        <label>Something to Share: 
+          <input type="text" name="somethingShare" placeholder="Optional">
+        </label>
+      </fieldset>
 
-      <div>
+      <fieldset>
+        <legend>Links</legend>
+        <input type="url" name="link1" value="https://webpages.charlotte.edu/aabdulk4/" placeholder="CLT Webpage" required>
+        <input type="url" name="link2" value="https://github.com/aabdulk4-sys" placeholder="GitHub" required>
+        <input type="url" name="link3" value="https://aabdulk4-sys.github.io/" placeholder="GitHub Pages" required>
+        <input type="url" name="link4" value="https://www.linkedin.com/in/ayah-abdulkareem/" placeholder="LinkedIn" required>
+        <input type="url" name="link5" value="https://www.freecodecamp.org/" placeholder="FreeCodeCamp" required>
+      </fieldset>
+
+      <div class="form-buttons">
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
-        <button type="button" id="clear">Clear</button>
+        <button type="button" id="clearBtn">Clear</button>
       </div>
     </form>
-
-    <section id="output"></section>
   </main>
 
-  <footer>
-    <p>Designed by <a href="../itis3135/ambitiousantelope.html" target="_blank">Ambitious Antelope Web Design</a> ©2025</p>
-    <p>
-      <a href="https://validator.w3.org/">HTML</a> |
-      <a href="https://jigsaw.w3.org/css-validator/">CSS</a> |
-      <a href="https://wave.webaim.org/">Accessibility</a>
-    </p>
-  </footer>
-
-  <script src="scripts/introduction.js"></script>
+  <div data-include="components/footer.html"></div>
+  <script src="scripts/HTMLInclude.min.js"></script>
 </body>
 </html>
