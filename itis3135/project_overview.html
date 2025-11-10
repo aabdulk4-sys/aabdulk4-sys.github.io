@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Overview | Ambitious Antelope Web App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      color: #222;
+      max-width: 900px;
+      margin: 2rem auto;
+      line-height: 1.6;
+    }
+    h1, h2, h3 { color: #0b5a75; }
+    figure { text-align: center; }
+    figcaption { font-style: italic; }
+    ul { list-style-type: square; }
+    a { color: #0b5a75; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Ambitious Antelope | Project Overview</h1>
+  <h2>Web Application Requirements & Design Document</h2>
+</header>
+
+<main>
+
+  <h3>Project Name</h3>
+  <p><strong>Street Kuality</strong> – a car-enthusiast community web app focused on automotive photography, event promotion, and collaboration between local creatives and brands.</p>
+
+  <h3>Project Overview</h3>
+  <p>
+    <strong>Function / Purpose:</strong>  
+    The Street Kuality web app will serve as a digital hub for automotive enthusiasts, photographers, and local events. 
+    Users can browse upcoming meets, view car-photography galleries, and connect with other creatives in Charlotte’s automotive community.
+  </p>
+  <p>
+    <strong>Intended Users:</strong>  
+    Automotive photographers, car enthusiasts, event organizers, and small businesses (car wraps, detailing, etc.) looking to collaborate or promote.
+  </p>
+  <p>
+    <strong>Overview of Content:</strong>  
+    The site will include a home page, event calendar, photo gallery, “About Us” page, contact form, and submission form for new events or photos.
+  </p>
+
+  <h3>Client Information</h3>
+  <ul>
+    <li><strong>Name:</strong> Ayah Abdulkareem</li>
+    <li><strong>Organization:</strong> Street Kuality Media / Ambitious Antelope Designs</li>
+    <li><strong>Email:</strong> [private]</li>
+    <li><strong>Phone:</strong> [private]</li>
+  </ul>
+
+  <h3>Wireframe</h3>
+  <figure>
+    <img src="images/wireframe_sk_home.png" alt="Wireframe of Street Kuality home page" width="600">
+    <figcaption>Initial wireframe created with Draw.io – layout for homepage and navigation bar.</figcaption>
+  </figure>
+  <p><a href="https://app.diagrams.net/">View the full wireframe in Draw.io</a></p>
+
+  <h3>Site Map</h3>
+  <figure>
+    <img src="images/sitemap_sk.png" alt="Site map of Street Kuality" width="600">
+    <figcaption>Site map showing navigation structure between Home, Events, Gallery, About, and Contact pages.</figcaption>
+  </figure>
+
+  <h3>Page Designs</h3>
+  <ol>
+    <li>
+      <strong>Home Page (index.html)</strong>  
+      <ul>
+        <li><em>Purpose:</em> Introduce the brand and show featured events or photos.</li>
+        <li><em>Audience:</em> General visitors.</li>
+        <li><em>Content:</em> Hero image, tagline, navigation bar, highlight section.</li>
+        <li><em>Actions:</em> Click to view events or gallery.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Events Page (events.html)</strong>  
+      <ul>
+        <li><em>Purpose:</em> List upcoming car meets with dates and locations.</li>
+        <li><em>Content:</em> Interactive table or cards of events with Google Map embeds.</li>
+        <li><em>Actions:</em> Filter by location/date, RSVP buttons (read-only).</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Gallery Page (gallery.html)</strong>  
+      <ul>
+        <li><em>Purpose:</em> Showcase car photography.</li>
+        <li><em>Content:</em> Grid of photos with hover effects and lightbox view.</li>
+        <li><em>Interactivity:</em> jQuery image slider or lightbox plugin.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>About Page (about.html)</strong>  
+      <ul>
+        <li><em>Purpose:</em> Share story of Street Kuality and its founder (Ayah).</li>
+        <li><em>Content:</em> Biography, brand mission, team image gallery.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Contact Page (contact.html)</strong>  
+      <ul>
+        <li><em>Purpose:</em> Allow users to submit inquiries or event ideas.</li>
+        <li><em>Content:</em> Contact form with fields: Name, Email, Message.</li>
+        <li><em>Validation:</em> JavaScript form validation before submission.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>Dynamic Functionality</h3>
+  <ul>
+    <li><strong>Interactive Gallery:</strong> Users can click to enlarge photos (via jQuery Lightbox).</li>
+    <li><strong>Event Filter:</strong> Drop-down filter for meet categories using AJAX.</li>
+    <li><strong>Form Validation:</strong> JavaScript ensures all required fields are filled correctly.</li>
+    <li><strong>Animated Navbar:</strong> Smooth jQuery scroll animations and fade effects.</li>
+  </ul>
+  <p><strong>Inspiration URLs:</strong></p>
+  <ul>
+    <li><a href="https://www.speedhunters.com/">Speedhunters.com</a> – automotive blog/gallery inspiration</li>
+    <li><a href="https://stanceworks.com/">StanceWorks</a> – layout and photo style inspiration</li>
+    <li><a href="https://www.carfetish.com/">CarFetish</a> – modern minimalist event interface</li>
+  </ul>
+
+  <h3>Notes & References</h3>
+  <p>Document created by <strong>Ayah A. Abdulkareem</strong> on <time datetime="2025-11-02">November 2, 2025</time> for ITIS 3135.  
+  All mockups created in Draw.io and Canva. Inspiration drawn from local car communities and design systems studied in Human-Centered Computing courses.</p>
+
+</main>
+
+<footer>
+  <p>Designed by <a href="https://webpages.charlotte.edu/aabdulk4/itis3135/">Ambitious Antelope Designs</a></p>
+  <p>
+    <a href="https://validator.w3.org/check?uri=referer">HTML Validation</a> |
+    <a href="https://jigsaw.w3.org/css-validator/check/referer">CSS Validation</a> |
+    <a href="https://wave.webaim.org/report#/">Accessibility Check</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -39,6 +39,19 @@
       </fieldset>
 
       <fieldset>
+        <legend>Image</legend>
+        <label for="upload-image">Upload Picture:</label>
+        <input type="file" id="upload-image" name="upload-image" accept="image/*" /><br />      
+        <label>Picture: <img
+          id="profile-pic"
+          src="images/ayah_mirror.jpg"
+          alt="Post-hired mirror picture"
+          style="max-width:250px; border-radius:10px; display:block; margin:auto;"
+        />        
+        <label>Caption: <input id="caption" value="Post-hired mirror picture." /></label>
+      </fieldset>
+
+      <fieldset>
         <legend>Background</legend>
         <label>Personal Background:<br />
           <textarea id="personal-bg" rows="3">Originally from Iraq, moved to Jordan, and then Charlotte at age 5. I speak Arabic fluently but mainly use it at home.</textarea>
@@ -85,13 +98,7 @@ ITIS 4353 – Social Technology Design: Will examine designs for social media pl
         </p>
       </fieldset>
 
-      <fieldset>
-        <legend>Image</legend>
-        <label for="upload-image">Upload Picture:</label>
-        <input type="file" id="upload-image" name="upload-image" accept="image/*" /><br />      
-        <label>Picture: <input id="image" value="itis3135/images/ayah_mirror.jpg" /></label><br />
-        <label>Caption: <input id="caption" value="Post-hired mirror picture." /></label>
-      </fieldset>
+
 
       <div style="text-align:center; margin-top:20px;">
         <button type="submit">Submit</button>
