@@ -2,9 +2,7 @@ export default function Home() {
     return (
       <section>
         <h2>Home</h2>
-        <p>
-          Welcome to the ITIS 3135 site of Ayah Abdulkareem — Ambitious Antelope.
-        </p>
+        <p>Welcome to my React version of the ITIS3135 site.</p>
       </section>
     );
   }

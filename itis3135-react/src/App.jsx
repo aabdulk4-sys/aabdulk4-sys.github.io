@@ -1,19 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
-import SecondaryNav from "./components/SecondaryNav";
 import Footer from "./components/Footer";
-
 import Home from "./pages/Home";
 import Introduction from "./pages/Introduction";
 import Contract from "./pages/Contract";
 
-function App() {
+export default function App() {
   return (
-    <Router>
+    <Router basename="/itis3135-react">
       <Header />
-      <SecondaryNav />
 
-      <main style={{ maxWidth: "900px", margin: "0 auto", padding: "1rem" }}>
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/introduction" element={<Introduction />} />
@@ -25,5 +22,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
