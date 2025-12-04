@@ -10,6 +10,8 @@ export default function Header() {
         <Link to="/introduction">Introduction</Link> |{" "}
         <Link to="/contract">Contract</Link> |{" "}
         <a href="https://aabdulk4-sys.github.io/itis3135-react/">React3</a>
+        <a href="/itis3135-react/students">React4 Students</a>
+
       </nav>
     </header>
   );

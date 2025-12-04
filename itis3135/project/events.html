@@ -18,21 +18,42 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle">
+    <span class="slider"></span>
+  </label>
 </header>
 
 <main>
   <h2>Upcoming Events</h2>
   <p>Join us for meets across North Carolina – where passion and performance meet.</p>
-  <table>
+
+  <label for="filter">Filter events by location:</label>
+  <select id="filter">
+    <option value="all">All</option>
+    <option value="charlotte">Charlotte</option>
+    <option value="concord">Concord</option>
+    <option value="uptown">Uptown</option>
+  </select>
+
+  <table id="events-table">
     <tr><th>Date</th><th>Event</th><th>Location</th></tr>
-    <tr><td>Nov 23 2025</td><td>SK Winter Meet</td><td>Charlotte Motorplex</td></tr>
-    <tr><td>Dec 14 2025</td><td>Cars & Caffeine</td><td>Uptown Charlotte</td></tr>
+    <tr data-location="concord"><td>Nov 23 2025</td><td>Winter Meet</td><td>Concord</td></tr>
+    <tr data-location="charlotte"><td>Dec 14 2025</td><td>Cars &amp; Caffeine</td><td>Charlotte</td></tr>
+    <tr data-location="uptown"><td>Jan 7 2026</td><td>Night Run</td><td>Uptown</td></tr>
   </table>
 </main>
 
 <footer>
   <p>Designed by <a href="../antelope/index.html">Ambitious Antelope Web Design</a> © 2025</p>
-  <p><a href="https://validator.w3.org/check?uri=referer">HTML Validation</a> | <a href="https://jigsaw.w3.org/css-validator/check/referer">CSS Validation</a></p>
+  <p>
+    <a href="https://validator.w3.org/check?uri=referer">HTML Validation</a> |
+    <a href="https://jigsaw.w3.org/css-validator/check/referer">CSS Validation</a>
+  </p>
 </footer>
+
+<script src="js/theme.js"></script>
+<script src="js/events.js"></script>
 </body>
 </html>
