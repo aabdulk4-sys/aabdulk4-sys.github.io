@@ -44,41 +44,29 @@
     color: #333;
   }
   
-/* 🔥 PERFECT IMAGE GRID (MATCHES EXAMPLE STYLE) */
-
-.image-grid {
+  /* 🔥 IMAGE LAYOUT (FIXED SIZE + CLEAN LOOK) */
+  .image-grid {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin: 2rem 0;
+    margin: 1.5rem 0 2.5rem;
     flex-wrap: wrap;
   }
   
-  /* each image box */
   .image-grid figure {
-    width: 300px;           /* 🔥 SAME WIDTH */
-    height: 260px;          /* 🔥 SAME HEIGHT */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 320px;            /* 🔥 SAME SIZE FOR ALL */
+    text-align: center;
   }
   
-  /* image itself */
+  /* 🔥 IMAGE SIZE FIX */
   .image-grid img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;      /* 🔥 forces SAME size visually */
-    border-radius: 12px;
+    height: 220px;           /* 🔥 FORCE SAME HEIGHT */
+    object-fit: contain;     /* 🔥 keeps full image (no crop) */
+    background: #f0f0f0;     /* gives clean backdrop */
     border: 2px solid #333;
-    background: #eee;
-  }
-  
-  /* caption */
-  .image-grid figcaption {
-    margin-top: 0.4rem;
-    font-size: 0.85rem;
-    color: #555;
+    border-radius: 10px;
+    padding: 5px;
   }
   
   /* CAPTION */
@@ -134,4 +122,15 @@
     .image-grid img {
       height: 200px;
     }
+  }
+  /* FORCE ALL CASE STUDY IMAGES TO MATCH */
+.case-study img {
+    width: 320px !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    border: 2px solid #333 !important;
+    border-radius: 10px !important;
+    display: block !important;
+    margin: 1rem auto !important;
+    background: #f0f0f0 !important;
   }
