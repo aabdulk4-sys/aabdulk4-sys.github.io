@@ -16,7 +16,13 @@
     line-height: 1.6;
   }
   
-  /* Header */
+  /* ── GLOBAL IMAGE RESET ── */
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* ── HEADER ── */
   .site-header {
     display: flex;
     justify-content: space-between;
@@ -51,19 +57,12 @@
     color: #e2001a;
   }
   
-  /* Main */
+  /* ── MAIN — no max-width here, let case-study.css handle it ── */
   main {
-    max-width: 65rem;
-    margin: 0 auto;
     padding: 2rem clamp(1rem, 4vw, 3rem);
   }
   
-  /* Hero */
-  .hero {
-    text-align: center;
-    padding: 4rem 0 3rem;
-  }
-  
+  /* ── HERO ── */
   .eyebrow,
   .project-label {
     color: #e2001a;
@@ -95,7 +94,7 @@
     margin-top: 1.5rem;
   }
   
-  /* Buttons */
+  /* ── BUTTONS ── */
   .primary-btn,
   .secondary-btn {
     display: inline-block;
@@ -125,7 +124,7 @@
     color: #e2001a;
   }
   
-  /* Sections */
+  /* ── SECTION CARDS (index page) ── */
   .section {
     background: #fff;
     padding: clamp(1.25rem, 3vw, 2rem);
@@ -167,13 +166,14 @@
     font-weight: 600;
   }
   
+  /* ── FOOTER ── */
   footer {
     text-align: center;
     padding: 2rem;
     color: #555;
   }
   
-  /* Mobile */
+  /* ── MOBILE ── */
   @media (max-width: 600px) {
     .site-header {
       align-items: flex-start;
@@ -181,9 +181,5 @@
   
     .nav {
       width: 100%;
-    }
-  
-    .hero {
-      padding: 2.5rem 0;
     }
   }
