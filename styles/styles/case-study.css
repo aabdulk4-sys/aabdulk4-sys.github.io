@@ -44,37 +44,37 @@
     color: #333;
   }
   
-  /* ===== IMAGE ROW ===== */
-  
-  .image-row {
+  /* ===== IMAGE GRID ===== */
+  .image-grid {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     margin: 2rem 0;
     flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
   }
   
-  /* each image container — let it grow equally */
-  .image-row figure {
-    flex: 1 1 280px;  /* grow/shrink, min 280px */
-    max-width: 320px;   /* cap at 320px */
+  .image-grid figure {
+    flex: 1 1 0;
+    min-width: 0;       /* critical — prevents flex overflow */
+    max-width: 48%;
     margin: 0;
     text-align: center;
   }
   
-  /* image fills the figure, locked height */
-  .image-row figure img {
-    width: 100%;          /* fills figure width */
-    height: 220px;        /* all same height */
-    object-fit: cover;    /* crops to fill, no distortion */
+  .image-grid figure img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
     border: 2px solid #333;
     border-radius: 12px;
     background: #eee;
     display: block;
+    max-width: 100%;
   }
   
-  /* caption */
-  .image-row figcaption {
+  .image-grid figcaption {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #555;
@@ -103,29 +103,28 @@
     color: #ccc;
   }
   
-  body.dark .image-row figure img {
+  body.dark .image-grid figure img {
     background: #2a2a2a;
     border-color: #666;
   }
   
-  body.dark .image-row figcaption {
+  body.dark .image-grid figcaption {
     color: #aaa;
   }
   
   /* MOBILE */
   @media (max-width: 700px) {
-    .image-row {
+    .image-grid {
       flex-direction: column;
       align-items: center;
     }
   
-    .image-row figure {
+    .image-grid figure {
       width: 90%;
       max-width: none;
     }
   
-    .image-row figure img {
+    .image-grid figure img {
       height: 200px;
     }
   }
-  
