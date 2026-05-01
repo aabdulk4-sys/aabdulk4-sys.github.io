@@ -1,142 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayah Abdulkareem | Personal Home Page</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayah Abdulkareem | Portfolio</title>
+    <link rel="stylesheet" href="styles/portfolio.css" />
+  </head>
 
-  <!-- Embedded CSS for Personal Site -->
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-      margin: 0 auto;
-      width: 90%;
-      max-width: 900px;
-      line-height: 1.6;
-    }
+  <body>
+    <header class="site-header">
+      <a href="index.html" class="logo">Ayah Abdulkareem</a>
 
-    header, main, footer {
-      text-align: center;
-      padding: 1rem;
-    }
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="case-study.html">Case Study</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
 
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      color: #1a5276;
-      margin-bottom: 0.3rem;
-    }
+    <main>
+      <section class="hero">
+        <p class="eyebrow">UX/UI Portfolio</p>
+        <h1>Hi, I’m Ayah.</h1>
+        <p class="hero-text">
+          I’m a Computer Science student with an interest in UX/UI design,
+          accessibility, and building user-friendly digital experiences.
+        </p>
 
-    h2 {
-      color: #117a65;
-      font-family: 'Poppins', sans-serif;
-      margin-top: 2rem;
-    }
+        <div class="hero-buttons">
+          <a href="case-study.html" class="primary-btn">View Case Study</a>
+          <a href="#projects" class="secondary-btn">View Projects</a>
+        </div>
+      </section>
 
-    p {
-      margin: 0.8rem auto;
-      width: 85%;
-    }
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>
+          I enjoy designing and building websites that are clean, functional,
+          and easy for users to navigate. My work focuses on improving usability,
+          creating clear layouts, and making digital experiences more accessible.
+        </p>
+      </section>
 
-    img {
-      max-width: 280px;
-      border-radius: 10px;
-      display: block;
-      margin: 1rem auto;
-    }
+      <section id="projects" class="section">
+        <h2>Featured Project</h2>
 
-    footer {
-      font-size: 0.9rem;
-      border-top: 2px solid #117a65;
-      padding-top: 1rem;
-      margin-top: 3rem;
-    }
+        <div class="project-card">
+          <div>
+            <p class="project-label">UX/UI Case Study</p>
+            <h3>Lenovo Website Redesign</h3>
+            <p>
+              An individual portfolio case study documenting my contribution to
+              a group Lenovo website redesign project. My focus was improving
+              navigation, account access, settings functionality, and accessibility
+              through dark mode.
+            </p>
+          </div>
 
-    footer a {
-      color: #1a5276;
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
+          <a href="case-study.html" class="primary-btn">Read Case Study</a>
+        </div>
+      </section>
 
-    footer a:hover {
-      color: #117a65;
-      text-decoration: underline;
-    }
-  </style>
+      <section class="section">
+        <h2>Skills Used</h2>
 
-  <!-- Accumulus Validator -->
-  <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
-</head>
+        <div class="skills-grid">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>UX Design</span>
+          <span>Accessibility</span>
+          <span>Usability Testing</span>
+        </div>
+      </section>
+    </main>
 
-<body>
-  <header>
-    <h1>Ayah Abdulkareem</h1>
-  </header>
-
-  <main>
-    <h2>Welcome to My Personal Home Page</h2>
-    
-    <h2>About Me</h2>
-
-  
-    <img src="ayah_mirror.jpg" alt="Post-hired mirror picture">
-
-    <p><strong>Ayah A. Abdulkareem | Ambitious Antelope</strong></p>
-
-    <p>Hi, my name is Ayah. I’m a senior (legally a sophomore since I earned my associate’s degree in high school) majoring in Computer Science with a concentration in Human Computer Interaction. I enjoy spending time with my friends and family, and I love traveling and photography, especially car photography.</p>
-
-    <h3>Personal Background</h3>
-    <p>Originally from Iraq, moved to Jordan, and then Charlotte at age 5. I speak Arabic fluently but mainly use it at home.</p>
-
-    <h3>Professional Background</h3>
-    <p>Worked as a Director at Chick-fil-A for 3 years, now Events Manager at Rally.</p>
-
-    <h3>Academic Background</h3>
-    <p>Senior, Computer Science major, Class of 2025.</p>
-
-    <h3>Primary Computer</h3>
-    <p>Apple laptop running macOS, primarily work at home or on campus.</p>
-
-    <h3>Courses I’m Taking & Why</h3>
-    <ul style="text-align:left; max-width:650px; margin: 1rem auto;">
-      <li><strong>ITIS 4350 – Design Prototyping:</strong> Required course; will teach me how to sketch and prototype on paper.</li>
-      <li><strong>ITIS 3135 – Front-End Web Application Development:</strong> Required course; will teach me about web applications.</li>
-      <li><strong>ITIS 3130 – Introduction to Human-Centered Computing:</strong> Required course; will teach me how to prioritize user needs, experiences, and ethical considerations.</li>
-      <li><strong>ITIS 4353 – Social Technology Design:</strong> Will examine designs for social media platforms and help me understand the social impact of spending at least part of our lives online.</li>
-    </ul>
-
-    <blockquote style="font-style: italic; margin: 2rem auto; width:80%;">
-      "If you expect disappointment, then you can never really get disappointed."  
-      — MJ (Spider-Man: No Way Home)
-    </blockquote>
-
-  
-
-    <!-- Assignment contract acknowledgement -->
-    <p style="margin-top:2rem; font-size:0.95rem; color:#555;">
-      <em>I acknowledge that any information I post on here will be public. — AA 08/24/2025</em>
-    </p>
-
-  </main>
-
-  <footer>
-    <nav>
-      <a href="https://github.com/aabdulk4-sys" target="_blank">GitHub.com</a> |
-      <a href="https://webpages.charlotte.edu/aabdulk4/" target="_blank">CLT Web</a> |
-      <a href="https://aabdulk4-sys.github.io/" target="_blank">GitHub.io</a> |
-      <a href="itis3135/" target="_blank">ITIS3135</a> |
-      <a href="https://www.linkedin.com/in/ayah-abdulkareem-6b0997222/" target="_blank">LinkedIn</a>
-    </nav>
-
-    <p>
-      Designed by
-      <a href="https://abdulkareementerprises.com" target="_blank" rel="noopener noreferrer">
-        Ambitious Antelope Web Design
-      </a>
-      ©2025
-    </p>
-  </footer>
-</body>
+    <footer>
+      <p>© 2026 Ayah Abdulkareem</p>
+    </footer>
+  </body>
 </html>
