@@ -44,33 +44,37 @@
     color: #333;
   }
   
-  /* 🔥 IMAGE LAYOUT (FIXED SIZE + CLEAN LOOK) */
-  .image-grid {
+  /* ===== IMAGE ROW ===== */
+  
+  .image-row {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin: 1.5rem 0 2.5rem;
+    margin: 2rem 0;
     flex-wrap: wrap;
   }
   
-  .image-grid figure {
-    width: 320px;            /* 🔥 SAME SIZE FOR ALL */
+  /* each image container — let it grow equally */
+  .image-row figure {
+    flex: 1 1 280px;  /* grow/shrink, min 280px */
+    max-width: 320px;   /* cap at 320px */
+    margin: 0;
     text-align: center;
   }
   
-  /* 🔥 IMAGE SIZE FIX */
-  .image-grid img {
-    width: 100%;
-    height: 220px;           /* 🔥 FORCE SAME HEIGHT */
-    object-fit: contain;     /* 🔥 keeps full image (no crop) */
-    background: #f0f0f0;     /* gives clean backdrop */
+  /* image fills the figure, locked height */
+  .image-row figure img {
+    width: 100%;          /* fills figure width */
+    height: 220px;        /* all same height */
+    object-fit: cover;    /* crops to fill, no distortion */
     border: 2px solid #333;
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 12px;
+    background: #eee;
+    display: block;
   }
   
-  /* CAPTION */
-  .image-grid figcaption {
+  /* caption */
+  .image-row figcaption {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: #555;
@@ -99,38 +103,29 @@
     color: #ccc;
   }
   
-  body.dark .image-grid img {
+  body.dark .image-row figure img {
     background: #2a2a2a;
     border-color: #666;
   }
   
-  body.dark figcaption {
+  body.dark .image-row figcaption {
     color: #aaa;
   }
   
-  /* 📱 MOBILE */
+  /* MOBILE */
   @media (max-width: 700px) {
-    .image-grid {
+    .image-row {
       flex-direction: column;
       align-items: center;
     }
   
-    .image-grid figure {
+    .image-row figure {
       width: 90%;
+      max-width: none;
     }
   
-    .image-grid img {
+    .image-row figure img {
       height: 200px;
     }
   }
-  /* FORCE ALL CASE STUDY IMAGES TO MATCH */
-.case-study img {
-    width: 320px !important;
-    height: 220px !important;
-    object-fit: cover !important;
-    border: 2px solid #333 !important;
-    border-radius: 10px !important;
-    display: block !important;
-    margin: 1rem auto !important;
-    background: #f0f0f0 !important;
-  }
+  
