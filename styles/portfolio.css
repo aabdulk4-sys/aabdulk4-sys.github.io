@@ -16,6 +16,7 @@
     line-height: 1.6;
   }
   
+  /* Header */
   .site-header {
     display: flex;
     justify-content: space-between;
@@ -50,14 +51,17 @@
     color: #e2001a;
   }
   
+  /* Main */
   main {
     max-width: 65rem;
     margin: 0 auto;
     padding: 2rem clamp(1rem, 4vw, 3rem);
   }
   
+  /* Hero */
   .hero {
-    padding: 4rem 0;
+    text-align: center;
+    padding: 4rem 0 3rem;
   }
   
   .eyebrow,
@@ -65,8 +69,9 @@
     color: #e2001a;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     margin-bottom: 0.5rem;
+    font-size: 0.85rem;
   }
   
   .hero h1 {
@@ -76,18 +81,21 @@
   }
   
   .hero-text {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     max-width: 42rem;
+    margin: 0 auto;
     color: #444;
   }
   
   .hero-buttons {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1.5rem;
   }
   
+  /* Buttons */
   .primary-btn,
   .secondary-btn {
     display: inline-block;
@@ -117,6 +125,7 @@
     color: #e2001a;
   }
   
+  /* Sections */
   .section {
     background: #fff;
     padding: clamp(1.25rem, 3vw, 2rem);
@@ -164,6 +173,7 @@
     color: #555;
   }
   
+  /* Mobile */
   @media (max-width: 600px) {
     .site-header {
       align-items: flex-start;
