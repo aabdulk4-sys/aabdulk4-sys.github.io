@@ -122,7 +122,7 @@ img {
 
 .image-grid img {
   width: 100%;
-  height: 200px;        /* 🔥 balanced size */
+  height: 260px;        /* 🔥 balanced size */
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid #333;
