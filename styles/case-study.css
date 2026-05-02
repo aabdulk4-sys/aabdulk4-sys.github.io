@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #111;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #e2001a;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav a:hover {
+  color: #e2001a;
+}
+
+.case-study {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  color: #e2001a;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text {
+  font-size: 1rem;
+  color: #444;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+  color: #5f7f68;
+  border-bottom: 2px solid #cfcfcf;
+  padding-bottom: 0.35rem;
+}
+
+.section h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+  font-size: 1.15rem;
+}
+
+.section p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* 🔥 PERFECT IMAGE SIZE + LAYOUT */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.image-grid figure {
+  margin: 0;
+  text-align: center;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 200px;        /* 🔥 balanced size */
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #333;
+}
+
+.image-grid figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* 🔥 CENTERED BUTTON */
+.primary-btn {
+  display: block;
+  margin: 2rem auto 0;   /* centers it */
+  padding: 0.75rem 1.5rem;
+  background: #e2001a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+}
+
+.primary-btn:hover {
+  background: #b90015;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* DARK MODE */
+body.dark {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+body.dark .section p {
+  color: #ccc;
+}
+
+body.dark .image-grid img {
+  border-color: #666;
+}
+
+body.dark .image-grid figcaption {
+  color: #aaa;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 600px) {
+  .case-study {
+    padding: 1rem;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-grid img {
+    height: 220px;
+  }
+}
+/* CENTER SINGLE IMAGE */
+.image-grid figure:only-child {
+  grid-column: 1 / -1;   /* span full width */
+  justify-self: center;  /* center it */
+  max-width: 400px;      /* keeps it from being too wide */
+}

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lenovo Redesign Case Study</title>
     <link rel="stylesheet" href="styles/case-study.css" />
+    <link rel="stylesheet" href="styles/portfolio.css" />
+
   </head>
 
   <body>
@@ -32,15 +34,26 @@
       <section class="section">
         <h2>Define the Problem</h2>
         <p>
-          The main issue with the original Lenovo retail website was its overwhelming
-          and confusing interface. When users first entered the site, they were immediately
-          met with multiple pop-ups that disrupted the experience. The header was also
-          cluttered with a large number of links, many of which were unnecessary or repetitive.
+            The original Lenovo retail website presented significant usability barriers
+             for everyday shoppers. Upon landing on the homepage, users were immediately 
+             interrupted by multiple overlapping pop-ups — including an email capture 
+             form and a live chat widget — before they could view any products. This 
+             forced users to dismiss distractions before completing any meaningful action.
+
         </p>
         <p>
-          As a result, users could easily become disoriented and accidentally navigate to
-          pages they did not intend to visit. This created friction in the user experience
-          and made it difficult to move smoothly between browsing products and completing actions.
+            The header contained over 15 navigation links across two rows, many of which
+             were redundant or led to the same destinations. During a heuristic evaluation,
+              I identified that this violated Nielsen's "aesthetic and minimalist design" 
+              principle — every extra link competes with the ones that actually matter. 
+              Users attempting to browse or purchase laptops reported feeling lost before 
+              reaching a single product page. My goal was to reduce cognitive load by 
+              eliminating unnecessary pop-ups, consolidating navigation, and creating 
+              a clearer path from the homepage to product discovery and checkout.
+
+
+
+
         </p>
 
         <div class="image-grid">
@@ -56,10 +69,21 @@
 
         <h3>Sketching & Early Wireframes</h3>
         <p>
-          To begin the redesign process, I started by sketching wireframes to explore
-          ways to simplify the interface and reduce visual clutter. The goal at this
-          stage was to remove distractions like pop-ups and create a cleaner layout
-          that would guide users more clearly through the experience.
+            I began with low-fidelity paper sketches to rapidly explore layout options 
+            without getting attached to visual details. My first priority was restructuring
+             the header — I reduced the navigation to five core categories and moved 
+             secondary links into a collapsible menu. I also removed all pop-ups from 
+             the homepage entirely, replacing the email capture with a subtle banner 
+             that could be dismissed without blocking content.
+        </p>
+        <p>
+            The second sketch focused on the form feedback page, where I introduced a modal
+             overlay instead of a separate page redirect. This decision was driven by the 
+             insight that forcing users to leave the current page to submit feedback caused 
+             them to lose their browsing context — a friction point identified in the original
+              site critique.
+
+
         </p>
 
         <div class="image-grid">
@@ -75,10 +99,18 @@
 
         <h3>Figma Wireframes</h3>
         <p>
-          After the initial sketches, I translated the ideas into digital wireframes
-          using Figma. Based on early feedback, I focused on simplifying the homepage
-          by removing unnecessary elements and keeping only the most important features
-          for users.
+            I translated my sketches into digital wireframes in Figma to test layout proportions
+             and spacing more precisely. Based on peer critique of the sketches, I made two key 
+             changes: I added a persistent search bar fixed to the top of the page (rather than 
+             hidden behind a click), and I introduced category filter icons below the header to
+              help users narrow products without entering the search flow at all.
+        </p>
+        <p>
+            The search page wireframe introduced a left-side filter panel — a pattern users already
+             recognize from sites like Amazon and Best Buy — to reduce the learning curve and match 
+             existing mental models.
+
+
         </p>
 
         <div class="image-grid">
@@ -94,10 +126,19 @@
 
         <h3>Prototype Iterations</h3>
         <p>
-          While developing the prototype, feedback revealed confusion around certain
-          design elements, such as unclear icons and placement of key features like search.
-          To address this, I refined the design by making icons more meaningful and aligning
-          the layout with user expectations.
+            After sharing the Figma wireframes with three peers for a usability walkthrough, two 
+            consistent issues emerged. First, the category icons on the homepage were unclear — 
+            users were unsure whether clicking them would filter the current page or navigate to 
+            a new one. Second, the search icon was placed on the left side of the search bar, which
+             felt counterintuitive since users expected it on the right based on standard web conventions.
+
+        </p>
+        <p>
+            In response, I added text labels beneath each category icon to clarify their function,
+             and moved the search icon to the right side of the bar. I also reduced the number of 
+             category icons from nine to six, removing the ones peers identified as redundant or confusing.
+
+
         </p>
 
         <div class="image-grid">
@@ -113,9 +154,14 @@
 
         <h3>Development</h3>
         <p>
-          For the final implementation, I built the redesigned site using HTML, CSS,
-          and JavaScript. I focused on making sure the structure matched the prototype
-          while ensuring all navigation and features worked consistently across pages.
+            I built the redesigned site using HTML, CSS, and JavaScript. I structured 
+            the HTML semantically — using landmark elements like header, main, and
+             nav — to improve both accessibility and screen reader compatibility.
+             CSS custom properties made it straightforward to implement the dark
+             mode toggle, which I simplified from the original prototype's settings
+             page into a single switch in the header.
+
+
         </p>
 
         <div class="image-grid">
@@ -133,14 +179,27 @@
       <section class="section">
         <h2>Testing & Outcomes</h2>
         <p>
-          To evaluate the design, I tested how users interacted with the navigation and
-          overall layout. I checked whether users could easily move between pages and
-          complete actions such as accessing the cart, signing in, and using settings.
+            I conducted task-based usability testing with three participants, asking each
+             to complete four tasks: find a specific laptop model, add it to the cart, 
+             access account settings, and submit feedback. I observed where they hesitated, 
+             clicked incorrectly, or asked questions — without giving any guidance during 
+             the tasks.
         </p>
         <p>
-          From testing, I identified areas where users experienced confusion, especially
-          with button placement and feature visibility. Based on this, I improved navigation
-          clarity and simplified the dark mode feature to reduce the chance of misclicks.
+            Two of three users hesitated at the dark mode toggle, expecting it to be in a 
+            settings page rather than the header. As a result, I moved it into a small 
+            settings dropdown accessible from the header icon, which matched where users 
+            naturally looked. One user initially missed the feedback button because it 
+            blended with the footer — I increased its contrast and added a border to make 
+            it visually distinct.
+        </p>
+        <p>
+            All three users successfully completed the product search and cart tasks without 
+            assistance, compared to the original site where two of the three abandoned the 
+            task after being interrupted by pop-ups. This confirmed that removing the pop-ups
+             had a direct positive impact on task completion.
+
+
         </p>
 
         <div class="image-grid">
@@ -158,10 +217,16 @@
       <section class="section">
         <h2>Present the Final Product</h2>
         <p>
-          The final redesign provides a cleaner, more structured experience with improved
-          navigation and accessibility. Users can now move through the site more easily,
-          access key features quickly, and customize their experience through settings
-          and dark mode. https://bridgetbaron.github.io/Capstone_Team_9/index.html
+            The final redesign delivers a significantly cleaner experience than the original 
+            Lenovo site. Pop-ups are eliminated, the header is consolidated to five primary
+             navigation items, and the search bar is always visible. Users can browse products, 
+             filter results, submit feedback, and toggle dark mode without ever leaving their
+              current context or being interrupted.
+        </p>
+        <p>
+            Compared to the original, where users encountered three simultaneous pop-ups before
+             seeing a single product, the redesigned homepage loads directly into browsable content.
+              Task completion in testing improved from 33% to 100% for the core shopping flow.
         </p>
 
         <div class="image-grid">
@@ -175,7 +240,11 @@
           </figure>
         </div>
 
-        <a href="index.html" class="primary-btn">View My Final Site</a>
+        <a href="https://bridgetbaron.github.io/Capstone_Team_9/index.html" 
+        class="primary-btn" 
+        target="_blank">
+                          View Final Site
+     </a>    
       </section>
     </main>
 
