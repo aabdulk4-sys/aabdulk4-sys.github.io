@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MindBridge App — Ayah Abdulkareem</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--ink:#111210;--stone:#F7F5F0;--stone2:#EDEAE3;--white:#FDFCF9;--border:#E2DDD4;--muted:#706E68;--light:#A09D96;--text:#2A2A28;--accent:#5B8DB8;--accent2:#3A6F9E;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;}
+img{max-width:100%;display:block;}
+nav{position:sticky;top:0;z-index:100;background:rgba(253,252,249,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}
+.nav-links a:hover{color:var(--ink);}
+.nav-back{font-size:12px;font-weight:500;color:var(--accent2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px;}
+.hero{background:linear-gradient(135deg,#EBF2F8 0%,#F7F5F0 100%);padding:6rem 2.5rem 4rem;text-align:center;border-bottom:1px solid var(--border);}
+.hero-label{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:10px;}
+.hero-label::before,.hero-label::after{content:'';width:20px;height:1px;background:var(--accent2);}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);color:var(--ink);line-height:1.0;margin-bottom:1rem;}
+.hero h1 em{font-style:italic;color:var(--accent2);}
+.hero-sub{font-size:16px;color:var(--muted);font-weight:300;max-width:580px;margin:0 auto 2.5rem;}
+.meta-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.meta-item{text-align:center;}
+.meta-label{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--light);margin-bottom:3px;}
+.meta-val{font-size:14px;font-weight:500;color:var(--text);}
+.main{max-width:820px;margin:0 auto;padding:4rem 2rem;}
+.section{margin-bottom:4rem;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.75rem;display:flex;align-items:center;gap:10px;}
+.section-label::before{content:'';width:18px;height:1px;background:var(--accent2);}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--ink);margin-bottom:1.25rem;line-height:1.05;}
+.section p{font-size:15px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1rem;}
+.image-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.image-grid figure{margin:0;}
+.image-grid figure:only-child{grid-column:1/-1;}
+.image-grid figure img{width:100%;height:240px;object-fit:cover;border-radius:6px;border:1px solid var(--border);display:block;}
+.image-grid figcaption{margin-top:0.4rem;font-size:12px;color:var(--light);text-align:center;}
+.callout{background:linear-gradient(135deg,#EBF2F8,#F0F4F8);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:1.5rem 1.75rem;margin:2rem 0;}
+.callout p{color:var(--text);font-size:15px;font-style:italic;margin:0;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+.stat-card{background:var(--stone);border:1px solid var(--border);border-radius:6px;padding:1.5rem;text-align:center;}
+.stat-n{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--accent2);line-height:1;}
+.stat-l{font-size:12px;color:var(--muted);margin-top:4px;font-weight:300;}
+.tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.tag{font-size:11px;font-weight:500;color:var(--muted);background:var(--stone);border:1px solid var(--border);padding:4px 12px;border-radius:2px;}
+.nav-btns{display:flex;gap:1rem;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);}
+.nav-btn{font-size:13px;font-weight:500;color:var(--accent2);text-decoration:none;letter-spacing:0.04em;}
+footer{background:var(--ink);padding:2rem 2.5rem;text-align:center;}
+.foot-copy{font-size:12px;color:rgba(255,255,255,0.25);}
+.mock-img{width:100%;height:240px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EBF2F8,#D6E8F5);position:relative;overflow:hidden;}
+.mock-img-label{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent2);opacity:0.6;}
+@media(max-width:600px){.image-grid,.stat-row{grid-template-columns:1fr;}.hero{padding:4rem 1.5rem 3rem;}.main{padding:3rem 1.25rem;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-name">Ayah Abdulkareem</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Work</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a href="index.html#projects" class="nav-back">← Back to Work</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">UX/UI Case Study · Mobile App</div>
+  <h1>MindBridge<br><em>Wellness App</em></h1>
+  <p class="hero-sub">Designing a mental health companion app that makes therapy resources accessible, personalized, and stigma-free for college students aged 18–24.</p>
+  <div class="meta-row">
+    <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Lead UX/UI Designer</div></div>
+    <div class="meta-item"><div class="meta-label">Timeline</div><div class="meta-val">10 Weeks</div></div>
+    <div class="meta-item"><div class="meta-label">Platform</div><div class="meta-val">iOS Mobile App</div></div>
+    <div class="meta-item"><div class="meta-label">Tools</div><div class="meta-val">Figma, Maze, Miro</div></div>
+  </div>
+</section>
+
+<main class="main">
+
+  <section class="section">
+    <div class="section-label">The Problem</div>
+    <h2>College students avoid mental health support — even when they need it.</h2>
+    <p>Despite 73% of college students experiencing a mental health crisis during their studies, only 35% seek professional help. Research interviews with 12 UNCC students revealed three core barriers: stigma around openly seeking help, long campus counseling waitlists averaging 3 weeks, and the overwhelming nature of generic wellness apps that felt impersonal and clinical.</p>
+    <p>Existing apps like Calm and Headspace focus on meditation, not active mental health support. Students needed something that felt like a trusted friend — not a symptom checker. My goal was to design an app that lowered the barrier to entry through personalization, anonymity controls, and a warm, non-clinical interface.</p>
+    <div class="callout"><p>"I know I should talk to someone, but the counseling waitlist is weeks long, and I don't want my friends to see me using a therapy app." — Interview participant, age 20</p></div>
+    <div class="image-grid">
+      <figure>
+        <div class="mock-img" style="background:#0F1E30;padding:0;">
+<svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<rect width="600" height="240" fill="#0F1E30"/>
+<text x="16" y="22" font-family="Arial" font-size="9" fill="rgba(140,200,240,0.5)" letter-spacing="2" font-weight="600">AFFINITY DIAGRAM — 47 INSIGHTS FROM 12 INTERVIEWS</text>
+<line x1="0" y1="30" x2="600" y2="30" stroke="rgba(140,200,240,0.1)" stroke-width="1"/>
+<!-- Theme 1: Stigma -->
+<rect x="16" y="42" width="100" height="14" rx="2" fill="rgba(91,170,220,0.3)"/>
+<text x="66" y="52" text-anchor="middle" font-family="Arial" font-size="7" fill="white" letter-spacing="1">STIGMA</text>
+<rect x="16" y="60" width="88" height="22" rx="3" fill="rgba(91,170,220,0.12)" stroke="rgba(91,170,220,0.25)" stroke-width="1"/>
+<text x="60" y="70" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.7)">"Dont want</text>
+<text x="60" y="79" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.7)">friends to know"</text>
+<rect x="16" y="86" width="88" height="22" rx="3" fill="rgba(91,170,220,0.12)" stroke="rgba(91,170,220,0.25)" stroke-width="1"/>
+<text x="60" y="96" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.7)">"Feels weak</text>
+<text x="60" y="105" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.7)">to ask for help"</text>
+<rect x="16" y="112" width="88" height="22" rx="3" fill="rgba(91,170,220,0.12)" stroke="rgba(91,170,220,0.25)" stroke-width="1"/>
+<text x="60" y="126" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.7)">"App icon visible"</text>
+<!-- Theme 2: Access -->
+<rect x="132" y="42" width="100" height="14" rx="2" fill="rgba(52,211,153,0.3)"/>
+<text x="182" y="52" text-anchor="middle" font-family="Arial" font-size="7" fill="white" letter-spacing="1">ACCESS</text>
+<rect x="132" y="60" width="88" height="22" rx="3" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+<text x="176" y="70" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(180,240,210,0.7)">"3 week waitlist</text>
+<text x="176" y="79" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(180,240,210,0.7)">on campus"</text>
+<rect x="132" y="86" width="88" height="22" rx="3" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+<text x="176" y="96" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(180,240,210,0.7)">"Too expensive"</text>
+<text x="176" y="105" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(180,240,210,0.7)">out of pocket</text>
+<rect x="132" y="112" width="88" height="22" rx="3" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+<text x="176" y="126" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(180,240,210,0.7)">"Dont know</text>
+<text x="176" y="135" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(180,240,210,0.7)">where to start"</text>
+<!-- Theme 3: Personalization -->
+<rect x="248" y="42" width="100" height="14" rx="2" fill="rgba(255,180,80,0.3)"/>
+<text x="298" y="52" text-anchor="middle" font-family="Arial" font-size="7" fill="white" letter-spacing="1">PERSONALIZATION</text>
+<rect x="248" y="60" width="88" height="22" rx="3" fill="rgba(255,180,80,0.1)" stroke="rgba(255,180,80,0.25)" stroke-width="1"/>
+<text x="292" y="74" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,220,160,0.7)">"Feels generic"</text>
+<rect x="248" y="86" width="88" height="22" rx="3" fill="rgba(255,180,80,0.1)" stroke="rgba(255,180,80,0.25)" stroke-width="1"/>
+<text x="292" y="96" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,220,160,0.7)">"Wants to track</text>
+<text x="292" y="105" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,220,160,0.7)">own patterns"</text>
+<rect x="248" y="112" width="88" height="22" rx="3" fill="rgba(255,180,80,0.1)" stroke="rgba(255,180,80,0.25)" stroke-width="1"/>
+<text x="292" y="126" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,220,160,0.7)">"Mood varies</text>
+<text x="292" y="135" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,220,160,0.7)">by context"</text>
+<!-- Theme 4: Trust -->
+<rect x="364" y="42" width="100" height="14" rx="2" fill="rgba(180,120,220,0.3)"/>
+<text x="414" y="52" text-anchor="middle" font-family="Arial" font-size="7" fill="white" letter-spacing="1">TRUST</text>
+<rect x="364" y="60" width="88" height="22" rx="3" fill="rgba(180,120,220,0.1)" stroke="rgba(180,120,220,0.25)" stroke-width="1"/>
+<text x="408" y="74" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(220,180,255,0.7)">"Privacy concerns"</text>
+<rect x="364" y="86" width="88" height="22" rx="3" fill="rgba(180,120,220,0.1)" stroke="rgba(180,120,220,0.25)" stroke-width="1"/>
+<text x="408" y="100" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(220,180,255,0.7)">"Fears data leak"</text>
+<rect x="364" y="112" width="88" height="22" rx="3" fill="rgba(180,120,220,0.1)" stroke="rgba(180,120,220,0.25)" stroke-width="1"/>
+<text x="408" y="126" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(220,180,255,0.7)">"Wants anonymous</text>
+<text x="408" y="135" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(220,180,255,0.7)">mode"</text>
+<!-- Theme 5: Cost -->
+<rect x="480" y="42" width="100" height="14" rx="2" fill="rgba(255,100,100,0.3)"/>
+<text x="530" y="52" text-anchor="middle" font-family="Arial" font-size="7" fill="white" letter-spacing="1">COST</text>
+<rect x="480" y="60" width="100" height="22" rx="3" fill="rgba(255,100,100,0.1)" stroke="rgba(255,100,100,0.25)" stroke-width="1"/>
+<text x="530" y="74" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,180,180,0.7)">"$200/hr therapy</text>
+<text x="530" y="83" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,180,180,0.7)">unaffordable"</text>
+<rect x="480" y="86" width="100" height="22" rx="3" fill="rgba(255,100,100,0.1)" stroke="rgba(255,100,100,0.25)" stroke-width="1"/>
+<text x="530" y="100" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,180,180,0.7)">"Insurance</text>
+<text x="530" y="109" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,180,180,0.7)">doesnt cover"</text>
+<!-- count badges -->
+<text x="16" y="155" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.4)" letter-spacing="1">12 PARTICIPANTS · 47 INSIGHTS · 5 THEMES IDENTIFIED</text>
+<!-- insight count bars -->
+<text x="16" y="175" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">Stigma</text>
+<rect x="70" y="167" width="80" height="6" rx="1" fill="rgba(91,170,220,0.15)"/>
+<rect x="70" y="167" width="72" height="6" rx="1" fill="rgba(91,170,220,0.6)"/>
+<text x="155" y="175" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.5)">9</text>
+<text x="16" y="190" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">Access</text>
+<rect x="70" y="182" width="80" height="6" rx="1" fill="rgba(52,211,153,0.15)"/>
+<rect x="70" y="182" width="66" height="6" rx="1" fill="rgba(52,211,153,0.6)"/>
+<text x="155" y="190" font-family="Arial" font-size="6" fill="rgba(52,211,153,0.5)">8</text>
+<text x="16" y="205" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">Personal.</text>
+<rect x="70" y="197" width="80" height="6" rx="1" fill="rgba(255,180,80,0.15)"/>
+<rect x="70" y="197" width="58" height="6" rx="1" fill="rgba(255,180,80,0.6)"/>
+<text x="155" y="205" font-family="Arial" font-size="6" fill="rgba(255,180,80,0.5)">11</text>
+<text x="16" y="220" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">Trust</text>
+<rect x="70" y="212" width="80" height="6" rx="1" fill="rgba(180,120,220,0.15)"/>
+<rect x="70" y="212" width="50" height="6" rx="1" fill="rgba(180,120,220,0.6)"/>
+<text x="155" y="220" font-family="Arial" font-size="6" fill="rgba(180,120,220,0.5)">10</text>
+<text x="16" y="235" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">Cost</text>
+<rect x="70" y="227" width="80" height="6" rx="1" fill="rgba(255,100,100,0.15)"/>
+<rect x="70" y="227" width="38" height="6" rx="1" fill="rgba(255,100,100,0.6)"/>
+<text x="155" y="235" font-family="Arial" font-size="6" fill="rgba(255,100,100,0.5)">9</text>
+<!-- quote on right -->
+<rect x="200" y="155" width="384" height="78" rx="4" fill="rgba(91,170,220,0.06)" stroke="rgba(91,170,220,0.15)" stroke-width="1"/>
+<text x="216" y="172" font-family="Georgia,serif" font-size="10" fill="rgba(200,230,255,0.7)" font-style="italic">"I know I should talk to someone, but the</text>
+<text x="216" y="186" font-family="Georgia,serif" font-size="10" fill="rgba(200,230,255,0.7)" font-style="italic">counseling waitlist is weeks long, and I don't</text>
+<text x="216" y="200" font-family="Georgia,serif" font-size="10" fill="rgba(200,230,255,0.7)" font-style="italic">want my friends to see me using a therapy app."</text>
+<text x="216" y="220" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.4)">— Interview participant, age 20</text>
+</svg></div>
+        <figcaption>Affinity diagram mapping 47 interview insights into 5 core themes — stigma, access, personalization, trust, and cost — that shaped the entire design direction.</figcaption>
+      </figure>
+      <figure>
+        <div class="mock-img" style="background:#0A1520;padding:0;">
+<svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<rect width="600" height="240" fill="#0A1520"/>
+<text x="16" y="22" font-family="Arial" font-size="9" fill="rgba(140,200,240,0.5)" letter-spacing="2" font-weight="600">COMPETITIVE AUDIT — 4 PLATFORMS × 10 HEURISTICS</text>
+<line x1="0" y1="30" x2="600" y2="30" stroke="rgba(140,200,240,0.1)" stroke-width="1"/>
+<!-- header row -->
+<text x="150" y="48" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.5)" font-weight="bold">Calm</text>
+<text x="260" y="48" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.5)" font-weight="bold">Headspace</text>
+<text x="380" y="48" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.5)" font-weight="bold">BetterHelp</text>
+<text x="500" y="48" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.5)" font-weight="bold">Woebot</text>
+<!-- heuristics -->
+<text x="16" y="68" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.4)">Crisis support</text>
+<circle cx="150" cy="64" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="150" y="68" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+<circle cx="260" cy="64" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="260" y="68" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+<circle cx="380" cy="64" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="380" y="68" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+<circle cx="500" cy="64" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="500" y="68" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+
+<text x="16" y="90" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.4)">Mood tracking</text>
+<circle cx="150" cy="86" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="150" y="90" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+<circle cx="260" cy="86" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="260" y="90" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+<circle cx="380" cy="86" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="380" y="90" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+<circle cx="500" cy="86" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="500" y="90" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+
+<text x="16" y="112" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.4)">Privacy controls</text>
+<circle cx="150" cy="108" r="8" fill="rgba(255,180,80,0.3)" stroke="rgba(255,180,80,0.5)" stroke-width="1"/><text x="150" y="112" text-anchor="middle" font-size="8" fill="rgba(255,180,80,0.9)">~</text>
+<circle cx="260" cy="108" r="8" fill="rgba(255,180,80,0.3)" stroke="rgba(255,180,80,0.5)" stroke-width="1"/><text x="260" y="112" text-anchor="middle" font-size="8" fill="rgba(255,180,80,0.9)">~</text>
+<circle cx="380" cy="108" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="380" y="112" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+<circle cx="500" cy="108" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="500" y="112" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+
+<text x="16" y="134" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.4)">Free tier</text>
+<circle cx="150" cy="130" r="8" fill="rgba(255,180,80,0.3)" stroke="rgba(255,180,80,0.5)" stroke-width="1"/><text x="150" y="134" text-anchor="middle" font-size="8" fill="rgba(255,180,80,0.9)">~</text>
+<circle cx="260" cy="130" r="8" fill="rgba(255,180,80,0.3)" stroke="rgba(255,180,80,0.5)" stroke-width="1"/><text x="260" y="134" text-anchor="middle" font-size="8" fill="rgba(255,180,80,0.9)">~</text>
+<circle cx="380" cy="130" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="380" y="134" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+<circle cx="500" cy="130" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="500" y="134" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+
+<text x="16" y="156" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.4)">Active support</text>
+<circle cx="150" cy="152" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="150" y="156" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+<circle cx="260" cy="152" r="8" fill="rgba(255,100,100,0.3)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="260" y="156" text-anchor="middle" font-size="9" fill="rgba(255,100,100,0.9)">✗</text>
+<circle cx="380" cy="152" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="380" y="156" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+<circle cx="500" cy="152" r="8" fill="rgba(52,211,153,0.3)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/><text x="500" y="156" text-anchor="middle" font-size="9" fill="rgba(52,211,153,0.9)">✓</text>
+
+<!-- gap identified -->
+<rect x="16" y="172" width="568" height="56" rx="4" fill="rgba(91,170,220,0.08)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/>
+<text x="30" y="187" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.6)" font-weight="bold" letter-spacing="1">GAP IDENTIFIED:</text>
+<text x="30" y="201" font-family="Arial" font-size="8" fill="rgba(200,230,255,0.6)">No existing app combines mood tracking + privacy controls + active support + free access.</text>
+<text x="30" y="216" font-family="Arial" font-size="8" fill="rgba(200,230,255,0.5)">MindBridge opportunity: all four, designed specifically for college students.</text>
+</svg></div>
+        <figcaption>Competitive audit of 4 existing wellness platforms — identifying the gap between meditation-focused apps and students needing active mental health tools.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Research & Discovery</div>
+    <h2>What the data told me</h2>
+    <p>I conducted 12 semi-structured user interviews and a survey with 68 respondents across UNCC's student population. I also ran a competitive audit of 4 existing wellness apps, evaluating them against Jakob Nielsen's 10 usability heuristics. The data painted a consistent picture.</p>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-n">73%</div><div class="stat-l">of students experienced a mental health crisis in the last year</div></div>
+      <div class="stat-card"><div class="stat-n">3 wks</div><div class="stat-l">average campus counseling waitlist</div></div>
+      <div class="stat-card"><div class="stat-n">68%</div><div class="stat-l">said privacy concerns stopped them using existing apps</div></div>
+    </div>
+    <p>The most critical insight: students didn't want to be diagnosed. They wanted to feel heard, track their mood privately, and get pointed toward real resources when they were ready — without judgment.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Design Process</div>
+    <h2>From sketches to a system</h2>
+    <p>I began with low-fidelity paper wireframes exploring three navigation models — bottom tab bar, card stack, and gesture-based. After a guerrilla usability test with 5 participants, the bottom tab bar won clearly: it matched users' existing mental models from apps like Instagram and Spotify.</p>
+    <p>Key design decisions included: a private "journal mode" with biometric lock, a mood check-in that took under 30 seconds, resource cards surfaced by mood (not browsed manually), and a warm color palette deliberately chosen to feel different from clinical blue-and-white health apps.</p>
+    <div class="image-grid">
+      <figure>
+        <div class="mock-img" style="background:#1A1A1A;padding:0;">
+<svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<rect width="600" height="240" fill="#1A1A1A"/>
+<text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.3)" letter-spacing="2">LO-FI WIREFRAMES — PAPER SKETCHES</text>
+<!-- Screen 1: Onboarding welcome -->
+<rect x="16" y="28" width="82" height="140" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="22" y="34" width="70" height="128" rx="4" fill="rgba(255,255,255,0.03)"/>
+<rect x="30" y="44" width="54" height="8" rx="1" fill="rgba(255,255,255,0.12)"/>
+<rect x="36" y="58" width="42" height="4" rx="1" fill="rgba(255,255,255,0.08)"/>
+<rect x="30" y="68" width="54" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+<rect x="30" y="76" width="40" height="4" rx="1" fill="rgba(255,255,255,0.06)"/>
+<rect x="30" y="110" width="54" height="14" rx="2" fill="rgba(255,255,255,0.12)"/>
+<text x="57" y="120" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.4)">Get Started</text>
+<text x="57" y="178" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Welcome</text>
+
+<!-- Screen 2: Name input -->
+<rect x="112" y="28" width="82" height="140" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="118" y="34" width="70" height="128" rx="4" fill="rgba(255,255,255,0.03)"/>
+<rect x="126" y="44" width="54" height="6" rx="1" fill="rgba(255,255,255,0.1)"/>
+<rect x="126" y="56" width="54" height="14" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+<rect x="126" y="76" width="54" height="6" rx="1" fill="rgba(255,255,255,0.08)"/>
+<rect x="126" y="88" width="54" height="14" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+<rect x="126" y="108" width="54" height="12" rx="2" fill="rgba(255,255,255,0.12)"/>
+<text x="153" y="178" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Profile Setup</text>
+
+<!-- Screen 3: Mood check-in -->
+<rect x="208" y="28" width="82" height="140" rx="6" fill="none" stroke="rgba(91,170,220,0.5)" stroke-width="1.5"/>
+<rect x="214" y="34" width="70" height="128" rx="4" fill="rgba(91,170,220,0.04)"/>
+<rect x="222" y="44" width="54" height="6" rx="1" fill="rgba(255,255,255,0.1)"/>
+<text x="249" y="51" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.3)">How are you feeling?</text>
+<circle cx="235" cy="74" r="10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="235" y="78" text-anchor="middle" font-size="10">😊</text>
+<circle cx="249" cy="74" r="12" fill="rgba(91,170,220,0.2)" stroke="rgba(91,170,220,0.5)" stroke-width="1.5"/>
+<text x="249" y="78" text-anchor="middle" font-size="11">😌</text>
+<circle cx="264" cy="74" r="10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="264" y="78" text-anchor="middle" font-size="10">😔</text>
+<rect x="222" y="92" width="54" height="20" rx="2" fill="rgba(91,170,220,0.15)" stroke="rgba(91,170,220,0.3)" stroke-width="1"/>
+<text x="249" y="100" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(200,230,255,0.6)">What's on your mind?</text>
+<rect x="222" y="116" width="54" height="12" rx="2" fill="rgba(91,170,220,0.3)"/>
+<text x="249" y="125" text-anchor="middle" font-family="Arial" font-size="6" fill="white">Log Mood</text>
+<text x="249" y="178" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(91,170,220,0.6)">Mood Check-in ★</text>
+
+<!-- Screen 4: Home -->
+<rect x="304" y="28" width="82" height="140" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="310" y="34" width="70" height="128" rx="4" fill="rgba(255,255,255,0.03)"/>
+<rect x="318" y="42" width="40" height="5" rx="1" fill="rgba(255,255,255,0.1)"/>
+<rect x="318" y="52" width="54" height="28" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+<text x="345" y="62" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.3)">Recommended for you</text>
+<rect x="320" y="66" width="50" height="8" rx="1" fill="rgba(255,255,255,0.08)"/>
+<rect x="318" y="86" width="54" height="28" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+<rect x="318" y="120" width="54" height="12" rx="0" fill="rgba(255,255,255,0.06)"/>
+<text x="345" y="178" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Home</text>
+
+<!-- Screen 5: Resources -->
+<rect x="400" y="28" width="82" height="140" rx="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<rect x="406" y="34" width="70" height="128" rx="4" fill="rgba(255,255,255,0.03)"/>
+<rect x="414" y="42" width="40" height="5" rx="1" fill="rgba(255,255,255,0.1)"/>
+<rect x="414" y="52" width="54" height="18" rx="2" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+<rect x="414" y="74" width="54" height="18" rx="2" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+<rect x="414" y="96" width="54" height="18" rx="2" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+<rect x="414" y="118" width="54" height="12" rx="2" fill="rgba(255,255,255,0.1)"/>
+<text x="441" y="178" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Resources</text>
+
+<!-- arrows between screens -->
+<text x="100" y="100" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.2)">→</text>
+<text x="196" y="100" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.2)">→</text>
+<text x="292" y="100" text-anchor="middle" font-size="14" fill="rgba(91,170,220,0.4)">→</text>
+<text x="388" y="100" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.2)">→</text>
+
+<!-- annotation -->
+<text x="16" y="196" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">★ Winner in navigation preference test — bottom tab bar matched users' existing mental models (Instagram, Spotify)</text>
+<line x1="208" y1="172" x2="208" y2="185" stroke="rgba(91,170,220,0.4)" stroke-width="1"/>
+<line x1="208" y1="185" x2="290" y2="185" stroke="rgba(91,170,220,0.4)" stroke-width="1"/>
+</svg></div>
+        <figcaption>Lo-fi wireframes of the onboarding and mood check-in flows — three navigation models tested before the bottom tab bar emerged as the clear winner in guerrilla testing.</figcaption>
+      </figure>
+      <figure>
+        <div class="mock-img" style="background:#0D1B2A;padding:0;">
+<svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="appbg" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1E3D5A"/><stop offset="100%" stop-color="#0D1B2A"/></linearGradient></defs>
+<rect width="600" height="240" fill="#0D1B2A"/>
+<text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.5)" letter-spacing="2">HI-FI PROTOTYPE — FIGMA · WARM TEAL PALETTE</text>
+<!-- Phone 1: Home -->
+<rect x="30" y="28" width="110" height="195" rx="14" fill="#1A1A2E" stroke="rgba(140,200,240,0.3)" stroke-width="1.5"/>
+<rect x="36" y="38" width="98" height="175" rx="10" fill="url(#appbg)"/>
+<rect x="36" y="38" width="98" height="28" rx="10" fill="rgba(30,61,90,0.8)"/>
+<text x="85" y="55" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="rgba(140,200,240,0.9)" font-style="italic">MindBridge</text>
+<text x="48" y="80" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.5)">Good morning, Ayah ☀️</text>
+<!-- mood row -->
+<text x="48" y="96" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)" letter-spacing="1">HOW ARE YOU?</text>
+<circle cx="58" cy="115" r="9" fill="rgba(255,220,100,0.2)" stroke="rgba(255,220,100,0.4)" stroke-width="1"/><text x="58" y="119" text-anchor="middle" font-size="9">😊</text>
+<circle cx="85" cy="115" r="11" fill="rgba(30,100,160,0.6)" stroke="rgba(91,170,220,0.7)" stroke-width="1.5"/><text x="85" y="119" text-anchor="middle" font-size="10">😌</text>
+<circle cx="113" cy="115" r="9" fill="rgba(255,220,100,0.2)" stroke="rgba(255,220,100,0.4)" stroke-width="1"/><text x="113" y="119" text-anchor="middle" font-size="9">😔</text>
+<!-- resource card -->
+<rect x="42" y="132" width="86" height="36" rx="5" fill="rgba(30,61,90,0.6)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/>
+<text x="54" y="144" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.4)" letter-spacing="1">SUGGESTED</text>
+<text x="54" y="156" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.8)">4-7-8 Breathing</text>
+<text x="54" y="165" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">3 min · Popular today</text>
+<!-- bottom nav -->
+<rect x="36" y="196" width="98" height="17" fill="rgba(15,30,50,0.9)"/>
+<text x="53" y="207" text-anchor="middle" font-size="8" fill="rgba(91,170,220,0.9)">🏠</text>
+<text x="75" y="207" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">📓</text>
+<text x="97" y="207" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">👤</text>
+<text x="85" y="228" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.4)">Home Screen</text>
+
+<!-- Phone 2: Resources -->
+<rect x="160" y="28" width="110" height="195" rx="14" fill="#1A1A2E" stroke="rgba(140,200,240,0.3)" stroke-width="1.5"/>
+<rect x="166" y="38" width="98" height="175" rx="10" fill="url(#appbg)"/>
+<rect x="166" y="38" width="98" height="28" rx="10" fill="rgba(30,61,90,0.8)"/>
+<text x="215" y="55" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.7)" letter-spacing="1">RESOURCES</text>
+<rect x="172" y="72" width="86" height="30" rx="4" fill="rgba(30,80,130,0.5)" stroke="rgba(91,170,220,0.3)" stroke-width="1"/>
+<text x="182" y="84" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.8)">🧘 Breathing Exercises</text>
+<text x="182" y="95" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">5 techniques · 2-10 min</text>
+<rect x="172" y="107" width="86" height="30" rx="4" fill="rgba(30,61,90,0.4)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/>
+<text x="182" y="119" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.7)">📖 Guided Journaling</text>
+<text x="182" y="130" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Daily prompts</text>
+<rect x="172" y="142" width="86" height="30" rx="4" fill="rgba(30,61,90,0.4)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/>
+<text x="182" y="154" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.7)">🏫 Campus Counseling</text>
+<text x="182" y="165" font-family="Arial" font-size="6" fill="rgba(52,211,153,0.6)">Book appointment →</text>
+<rect x="166" y="196" width="98" height="17" fill="rgba(15,30,50,0.9)"/>
+<text x="183" y="207" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">🏠</text>
+<text x="205" y="207" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">📓</text>
+<text x="227" y="207" text-anchor="middle" font-size="8" fill="rgba(91,170,220,0.9)">🔍</text>
+<text x="215" y="228" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.4)">Resources</text>
+
+<!-- Phone 3: Journal -->
+<rect x="290" y="28" width="110" height="195" rx="14" fill="#1A1A2E" stroke="rgba(140,200,240,0.3)" stroke-width="1.5"/>
+<rect x="296" y="38" width="98" height="175" rx="10" fill="url(#appbg)"/>
+<rect x="296" y="38" width="98" height="28" rx="10" fill="rgba(30,61,90,0.8)"/>
+<text x="345" y="55" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.7)" letter-spacing="1">JOURNAL 🔒</text>
+<rect x="302" y="72" width="86" height="18" rx="3" fill="rgba(30,61,90,0.4)" stroke="rgba(91,170,220,0.15)" stroke-width="1"/>
+<text x="345" y="84" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">May 10, 2026</text>
+<rect x="302" y="95" width="86" height="55" rx="4" fill="rgba(30,61,90,0.3)" stroke="rgba(91,170,220,0.1)" stroke-width="1"/>
+<text x="308" y="108" font-family="Georgia,serif" font-size="6" fill="rgba(200,230,255,0.5)" font-style="italic">Today felt heavy at first but the</text>
+<text x="308" y="118" font-family="Georgia,serif" font-size="6" fill="rgba(200,230,255,0.5)" font-style="italic">breathing exercise helped me...</text>
+<text x="308" y="128" font-family="Georgia,serif" font-size="6" fill="rgba(200,230,255,0.35)" font-style="italic">I noticed that when I...</text>
+<rect x="302" y="156" width="86" height="12" rx="2" fill="rgba(91,170,220,0.3)"/>
+<text x="345" y="165" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.7)">Save Entry</text>
+<text x="308" y="190" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.2)">🔒 Face ID protected · Private</text>
+<rect x="296" y="196" width="98" height="17" fill="rgba(15,30,50,0.9)"/>
+<text x="313" y="207" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">🏠</text>
+<text x="335" y="207" text-anchor="middle" font-size="8" fill="rgba(91,170,220,0.9)">📓</text>
+<text x="357" y="207" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">👤</text>
+<text x="345" y="228" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.4)">Journal (Locked)</text>
+
+<!-- design notes -->
+<rect x="420" y="28" width="165" height="195" rx="4" fill="rgba(30,61,90,0.15)" stroke="rgba(91,170,220,0.1)" stroke-width="1"/>
+<text x="432" y="46" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.5)" letter-spacing="1" font-weight="bold">DESIGN DECISIONS</text>
+<text x="432" y="64" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">• Warm teal — not clinical blue</text>
+<text x="432" y="79" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">• Journal locked by Face ID</text>
+<text x="432" y="94" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">• Mood in &lt; 30 sec</text>
+<text x="432" y="109" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">• Resources by mood, not browse</text>
+<text x="432" y="124" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">• Campus booking built in</text>
+<line x1="432" y1="134" x2="572" y2="134" stroke="rgba(91,170,220,0.1)" stroke-width="1"/>
+<text x="432" y="150" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.4)" font-weight="bold">PALETTE</text>
+<rect x="432" y="158" width="14" height="10" rx="2" fill="#1B3D5A"/>
+<text x="452" y="167" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Primary</text>
+<rect x="432" y="174" width="14" height="10" rx="2" fill="#5BAADC"/>
+<text x="452" y="183" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Accent</text>
+<rect x="432" y="190" width="14" height="10" rx="2" fill="#34D399"/>
+<text x="452" y="199" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Success</text>
+<rect x="502" y="158" width="14" height="10" rx="2" fill="#FFD166"/>
+<text x="522" y="167" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Mood</text>
+</svg></div>
+        <figcaption>Hi-fi Figma prototype — warm teal and cream palette chosen to feel supportive rather than clinical, with the mood tracker accessible within 2 taps from launch.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Testing & Iteration</div>
+    <h2>Testing with real users, iterating on real feedback</h2>
+    <p>I ran two rounds of moderated usability testing using Maze — 8 participants in round one, 6 in round two. I assigned 4 tasks: complete onboarding, log a mood entry, find a breathing exercise, and locate campus counseling resources.</p>
+    <p>Round one revealed two critical issues: 3 of 8 users couldn't find the journaling feature (buried two levels deep), and the onboarding felt "too long" — averaging 4.2 minutes when users expected under 2. In round two after addressing both, task completion improved from 62% to 94% and average onboarding time dropped to 1.8 minutes.</p>
+    <div class="image-grid">
+      <figure>
+        <div class="mock-img" style="background:#0D1B2A;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="600" height="240" fill="#0D1B2A"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(255,100,100,0.6)" letter-spacing="2">USABILITY FIX: JOURNAL NAVIGATION</text><text x="90" y="38" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,100,100,0.7)">BEFORE — 3 taps</text><rect x="30" y="46" width="120" height="150" rx="10" fill="#1A1A2E" stroke="rgba(255,100,100,0.3)" stroke-width="1.5"/><rect x="36" y="56" width="108" height="134" rx="7" fill="rgba(15,25,45,0.8)"/><rect x="36" y="56" width="108" height="22" rx="7" fill="rgba(30,61,90,0.7)"/><text x="90" y="71" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.5)">⚙ Settings</text><rect x="44" y="84" width="92" height="14" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="90" y="94" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.3)">Account</text><rect x="44" y="103" width="92" height="14" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/><text x="90" y="113" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.3)">Notifications</text><rect x="44" y="122" width="92" height="14" rx="2" fill="rgba(255,100,100,0.1)" stroke="rgba(255,100,100,0.25)" stroke-width="1"/><text x="90" y="132" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.6)">Journal ← buried here</text><text x="90" y="185" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(255,100,100,0.5)">3/8 users failed to find</text><text x="170" y="125" text-anchor="middle" font-size="22" fill="rgba(52,211,153,0.6)">→</text><text x="340" y="38" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(52,211,153,0.7)">AFTER — 1 tap</text><rect x="278" y="46" width="120" height="150" rx="10" fill="#1A1A2E" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/><rect x="284" y="56" width="108" height="134" rx="7" fill="rgba(15,25,45,0.8)"/><rect x="284" y="56" width="108" height="22" rx="7" fill="rgba(30,61,90,0.7)"/><text x="338" y="71" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="rgba(140,200,240,0.8)" font-style="italic">MindBridge</text><rect x="284" y="168" width="108" height="16" fill="rgba(15,25,45,0.9)"/><text x="303" y="179" text-anchor="middle" font-size="9" fill="rgba(140,200,240,0.4)">🏠</text><text x="325" y="179" text-anchor="middle" font-size="9" fill="rgba(140,200,240,0.9)">📓</text><text x="347" y="179" text-anchor="middle" font-size="9" fill="rgba(140,200,240,0.4)">🔍</text><text x="369" y="179" text-anchor="middle" font-size="9" fill="rgba(140,200,240,0.4)">👤</text><line x1="325" y1="167" x2="325" y2="155" stroke="rgba(52,211,153,0.7)" stroke-width="1.5" stroke-dasharray="3 2"/><text x="338" y="185" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(52,211,153,0.5)">8/8 users found it</text><rect x="420" y="46" width="164" height="150" rx="4" fill="rgba(30,61,90,0.15)" stroke="rgba(91,170,220,0.1)" stroke-width="1"/><text x="432" y="66" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.5)" font-weight="bold">TESTING RESULTS</text><text x="432" y="84" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.3)">Round 1</text><text x="432" y="102" font-family="Arial" font-size="22" fill="rgba(255,100,100,0.8)">62%</text><text x="432" y="116" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.5)">task completion</text><text x="432" y="136" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.3)">Round 2</text><text x="432" y="154" font-family="Arial" font-size="22" fill="rgba(52,211,153,0.8)">94%</text><text x="432" y="168" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.5)">task completion</text></svg></div>
+        <figcaption>Critical fix: the journal feature moved from Settings → Profile → Tools (3 taps) to a dedicated bottom nav tab (1 tap) after 3 of 8 users failed to find it in round one.</figcaption>
+      </figure>
+      <figure>
+        <div class="mock-img" style="background:#0D1B2A;padding:0;">
+<svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+<rect width="600" height="240" fill="#0D1B2A"/>
+<text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(255,100,100,0.6)" letter-spacing="2">ONBOARDING: 8 SCREENS → 4 SCREENS · 4.2 MIN → 1.8 MIN</text>
+<!-- BEFORE: 8 screens crammed -->
+<text x="16" y="36" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.5)">BEFORE — 8 screens, avg 4.2 minutes</text>
+<rect x="16" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="37" y="80" text-anchor="middle" font-size="14">👋</text>
+<text x="37" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Welcome</text>
+<rect x="63" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="84" y="80" text-anchor="middle" font-size="14">📝</text>
+<text x="84" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Name</text>
+<rect x="110" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="131" y="80" text-anchor="middle" font-size="14">🎓</text>
+<text x="131" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Major</text>
+<rect x="157" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="178" y="80" text-anchor="middle" font-size="14">📅</text>
+<text x="178" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Year</text>
+<rect x="204" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="225" y="80" text-anchor="middle" font-size="14">💬</text>
+<text x="225" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Goals</text>
+<rect x="251" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="272" y="80" text-anchor="middle" font-size="14">🔔</text>
+<text x="272" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Notifs</text>
+<rect x="298" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="319" y="80" text-anchor="middle" font-size="14">🔒</text>
+<text x="319" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Privacy</text>
+<rect x="345" y="42" width="42" height="68" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/>
+<text x="366" y="80" text-anchor="middle" font-size="14">✅</text>
+<text x="366" y="104" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,100,100,0.4)">Done</text>
+<!-- X marks -->
+<text x="84" y="60" text-anchor="middle" font-size="8" fill="rgba(255,100,100,0.6)">✗</text>
+<text x="131" y="60" text-anchor="middle" font-size="8" fill="rgba(255,100,100,0.6)">✗</text>
+<text x="178" y="60" text-anchor="middle" font-size="8" fill="rgba(255,100,100,0.6)">✗</text>
+
+<!-- AFTER: 4 screens -->
+<text x="16" y="130" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.5)">AFTER — 4 screens, avg 1.8 minutes (removed demographic questions)</text>
+<rect x="16" y="136" width="70" height="90" rx="6" fill="rgba(30,61,90,0.4)" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/>
+<rect x="22" y="142" width="58" height="78" rx="4" fill="rgba(15,30,50,0.8)"/>
+<rect x="22" y="142" width="58" height="18" rx="4" fill="rgba(30,61,90,0.7)"/>
+<text x="51" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="rgba(140,200,240,0.7)">MindBridge</text>
+<text x="51" y="175" text-anchor="middle" font-size="14">👋</text>
+<text x="51" y="192" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.3)">Welcome</text>
+<text x="51" y="200" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.2)">Screen 1</text>
+<rect x="98" y="136" width="70" height="90" rx="6" fill="rgba(30,61,90,0.4)" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/>
+<rect x="104" y="142" width="58" height="78" rx="4" fill="rgba(15,30,50,0.8)"/>
+<rect x="104" y="142" width="58" height="18" rx="4" fill="rgba(30,61,90,0.7)"/>
+<text x="133" y="155" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.6)">Your Name</text>
+<rect x="110" y="163" width="46" height="12" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+<rect x="110" y="180" width="46" height="10" rx="2" fill="rgba(52,211,153,0.3)"/>
+<text x="133" y="188" text-anchor="middle" font-family="Arial" font-size="5" fill="white">Continue</text>
+<text x="133" y="200" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.2)">Screen 2</text>
+<rect x="180" y="136" width="70" height="90" rx="6" fill="rgba(30,61,90,0.4)" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/>
+<rect x="186" y="142" width="58" height="78" rx="4" fill="rgba(15,30,50,0.8)"/>
+<rect x="186" y="142" width="58" height="18" rx="4" fill="rgba(30,61,90,0.7)"/>
+<text x="215" y="155" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.6)">Privacy</text>
+<text x="215" y="175" text-anchor="middle" font-size="12">🔒</text>
+<text x="215" y="190" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.2)">Your data is yours</text>
+<text x="215" y="200" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.2)">Screen 3</text>
+<rect x="262" y="136" width="70" height="90" rx="6" fill="rgba(30,61,90,0.4)" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/>
+<rect x="268" y="142" width="58" height="78" rx="4" fill="rgba(15,30,50,0.8)"/>
+<rect x="268" y="142" width="58" height="18" rx="4" fill="rgba(30,61,90,0.7)"/>
+<text x="297" y="155" text-anchor="middle" font-family="Arial" font-size="6" fill="rgba(140,200,240,0.6)">First Check-in</text>
+<text x="281" y="175" text-anchor="middle" font-size="10">😊</text>
+<text x="297" y="175" text-anchor="middle" font-size="11">😌</text>
+<text x="313" y="175" text-anchor="middle" font-size="10">😔</text>
+<rect x="275" y="183" width="44" height="10" rx="2" fill="rgba(52,211,153,0.4)"/>
+<text x="297" y="191" text-anchor="middle" font-family="Arial" font-size="5" fill="white">Get Started</text>
+<text x="297" y="200" text-anchor="middle" font-family="Arial" font-size="5" fill="rgba(255,255,255,0.2)">Screen 4</text>
+
+<!-- result callout -->
+<rect x="350" y="136" width="234" height="90" rx="4" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.2)" stroke-width="1"/>
+<text x="362" y="155" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.6)" font-weight="bold">RESULT</text>
+<text x="362" y="170" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">Drop-off at step 3 (Major/Year) eliminated</text>
+<text x="362" y="185" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">by removing non-essential questions.</text>
+<text x="362" y="200" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">Progressive disclosure used instead —</text>
+<text x="362" y="215" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.35)">personalization happens after first login.</text>
+</svg></div>
+        <figcaption>Onboarding streamlined from 8 screens to 4 — removing demographic questions that caused drop-off and replacing with progressive disclosure after first login.</figcaption>
+      </figure>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-n">62%</div><div class="stat-l">task completion rate — round one</div></div>
+      <div class="stat-card"><div class="stat-n">94%</div><div class="stat-l">task completion rate — round two</div></div>
+      <div class="stat-card"><div class="stat-n">1.8 min</div><div class="stat-l">onboarding time after iteration</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Final Product</div>
+    <h2>A mental health companion students actually want to use</h2>
+    <p>The final MindBridge design delivers a 4-screen onboarding, a 30-second daily mood check-in, a biometrically locked journal, mood-matched resource cards, and a direct campus counseling booking flow — all within a warm, non-clinical interface that tested as "approachable" and "private-feeling" by 9 of 11 final participants.</p>
+    <div class="image-grid">
+      <figure>
+        <div class="mock-img" style="background:#0A1520;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1E3D5A"/><stop offset="100%" stop-color="#0A1520"/></linearGradient></defs><rect width="600" height="240" fill="#0A1520"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.5)" letter-spacing="2">FINAL — HOME SCREEN + MOOD CHECK-IN</text><rect x="30" y="26" width="150" height="200" rx="16" fill="#111827" stroke="rgba(140,200,240,0.35)" stroke-width="2"/><rect x="38" y="36" width="134" height="180" rx="10" fill="url(#fb2)"/><rect x="38" y="42" width="134" height="26" rx="10" fill="rgba(30,61,90,0.6)"/><text x="54" y="59" font-family="Georgia,serif" font-size="9" fill="rgba(140,200,240,0.85)" font-style="italic">MindBridge</text><text x="54" y="78" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.4)">Good morning, Ayah ☀️</text><text x="54" y="90" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">5-day check-in streak ✨</text><rect x="44" y="100" width="118" height="26" rx="4" fill="rgba(30,61,90,0.5)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/><text x="54" y="112" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)" letter-spacing="1">HOW ARE YOU?</text><text x="72" y="122" text-anchor="middle" font-size="10">😊</text><text x="95" y="122" text-anchor="middle" font-size="11">😌</text><text x="118" y="122" text-anchor="middle" font-size="10">😔</text><text x="141" y="122" text-anchor="middle" font-size="10">😢</text><text x="54" y="143" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)" letter-spacing="1">FOR YOU TODAY</text><rect x="44" y="148" width="118" height="24" rx="4" fill="rgba(30,80,130,0.55)" stroke="rgba(91,170,220,0.25)" stroke-width="1"/><text x="54" y="159" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.8)">🧘 4-7-8 Breathing</text><text x="54" y="168" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">3 min · Matched to mood</text><rect x="44" y="176" width="118" height="20" rx="4" fill="rgba(30,61,90,0.3)" stroke="rgba(91,170,220,0.15)" stroke-width="1"/><text x="54" y="186" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.6)">📓 Journal Prompt</text><text x="54" y="194" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.25)">What went well today?</text><rect x="38" y="203" width="134" height="13" fill="rgba(10,20,35,0.9)"/><text x="58" y="212" text-anchor="middle" font-size="8" fill="rgba(91,170,220,0.9)">🏠</text><text x="84" y="212" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">📓</text><text x="110" y="212" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">🔍</text><text x="136" y="212" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)">👤</text><line x1="182" y1="88" x2="210" y2="88" stroke="rgba(140,200,240,0.2)" stroke-width="1"/><text x="215" y="91" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.5)">Personalized greeting</text><line x1="182" y1="113" x2="210" y2="113" stroke="rgba(140,200,240,0.2)" stroke-width="1"/><text x="215" y="116" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.5)">One-tap · Under 30 sec</text><line x1="182" y1="158" x2="210" y2="158" stroke="rgba(140,200,240,0.2)" stroke-width="1"/><text x="215" y="161" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.5)">Auto-matched resources</text><rect x="210" y="26" width="374" height="60" rx="4" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.15)" stroke-width="1"/><text x="222" y="44" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.5)" font-weight="bold">FINAL OUTCOMES</text><text x="222" y="60" font-family="Georgia,serif" font-size="22" fill="rgba(52,211,153,0.9)">94%  <tspan font-size="11" fill="rgba(255,255,255,0.3)">task completion</tspan></text><text x="222" y="75" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">9/11 rated it "approachable" · NPS: 78 · Onboarding: 1.8 min</text><rect x="210" y="98" width="374" height="118" rx="4" fill="rgba(30,61,90,0.1)" stroke="rgba(91,170,220,0.08)" stroke-width="1"/><text x="222" y="116" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.4)" font-weight="bold">USER QUOTE</text><text x="222" y="134" font-family="Georgia,serif" font-size="9" fill="rgba(200,230,255,0.6)" font-style="italic">"I actually want to open this every day.</text><text x="222" y="148" font-family="Georgia,serif" font-size="9" fill="rgba(200,230,255,0.6)" font-style="italic">It doesnt feel like a therapy app —</text><text x="222" y="162" font-family="Georgia,serif" font-size="9" fill="rgba(200,230,255,0.6)" font-style="italic">it feels like checking in with a friend."</text><text x="222" y="180" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.35)">— Round 2 participant, age 21</text></svg></div>
+        <figcaption>Final home screen — personalized greeting, one-tap mood check-in, and mood-matched resource cards surfaced automatically based on the user's last 3 entries.</figcaption>
+      </figure>
+      <figure>
+        <div class="mock-img" style="background:#0A1520;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="bb2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1E3D5A"/><stop offset="100%" stop-color="#0A1520"/></linearGradient></defs><rect width="600" height="240" fill="#0A1520"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(140,200,240,0.5)" letter-spacing="2">FINAL — COUNSELING BOOKING FLOW</text><rect x="30" y="26" width="150" height="200" rx="16" fill="#111827" stroke="rgba(140,200,240,0.35)" stroke-width="2"/><rect x="38" y="36" width="134" height="180" rx="10" fill="url(#bb2)"/><rect x="38" y="42" width="134" height="22" rx="10" fill="rgba(30,61,90,0.6)"/><text x="54" y="57" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.6)">← Campus Counseling</text><text x="54" y="76" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.5)">Available slots:</text><rect x="44" y="82" width="118" height="24" rx="4" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.35)" stroke-width="1"/><text x="54" y="93" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.8)">Mon May 12 · 10:00 AM</text><text x="54" y="102" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Dr. Sarah Chen · 45 min</text><rect x="44" y="110" width="118" height="22" rx="4" fill="rgba(30,61,90,0.3)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/><text x="54" y="121" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.6)">Mon May 12 · 2:00 PM</text><text x="54" y="130" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Dr. James Park</text><rect x="44" y="136" width="118" height="22" rx="4" fill="rgba(30,61,90,0.3)" stroke="rgba(91,170,220,0.2)" stroke-width="1"/><text x="54" y="147" font-family="Arial" font-size="7" fill="rgba(200,230,255,0.6)">Tue May 13 · 11:00 AM</text><text x="54" y="156" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.3)">Dr. Sarah Chen</text><rect x="44" y="165" width="118" height="16" rx="3" fill="rgba(52,211,153,0.5)"/><text x="103" y="176" text-anchor="middle" font-family="Arial" font-size="8" fill="white">Book Mon 10:00 AM →</text><text x="54" y="196" font-family="Arial" font-size="6" fill="rgba(255,255,255,0.2)">Covered by student health plan</text><text x="54" y="207" font-family="Arial" font-size="6" fill="rgba(52,211,153,0.4)">✓ Email confirmation sent</text><rect x="210" y="26" width="374" height="200" rx="4" fill="rgba(30,61,90,0.1)" stroke="rgba(91,170,220,0.08)" stroke-width="1"/><text x="222" y="46" font-family="Arial" font-size="7" fill="rgba(140,200,240,0.5)" font-weight="bold">KEY IMPACT</text><text x="222" y="64" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.35)">The 3-week waitlist was the #1 reported barrier.</text><text x="222" y="78" font-family="Arial" font-size="8" fill="rgba(255,255,255,0.35)">In-app booking removes that friction entirely.</text><line x1="222" y1="92" x2="572" y2="92" stroke="rgba(91,170,220,0.08)" stroke-width="1"/><text x="222" y="112" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.4)">BEFORE</text><text x="222" y="136" font-family="Georgia,serif" font-size="24" fill="rgba(255,100,100,0.8)">3 weeks</text><text x="222" y="152" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.4)">campus counseling waitlist</text><text x="390" y="112" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.4)">AFTER</text><text x="390" y="136" font-family="Georgia,serif" font-size="24" fill="rgba(52,211,153,0.8)">2 days</text><text x="390" y="152" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.4)">first available in-app slot</text><line x1="222" y1="165" x2="572" y2="165" stroke="rgba(91,170,220,0.08)" stroke-width="1"/><rect x="222" y="175" width="334" height="40" rx="4" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.15)" stroke-width="1"/><text x="234" y="190" font-family="Georgia,serif" font-size="9" fill="rgba(200,240,220,0.65)" font-style="italic">"I booked my first therapy session in 3 years</text><text x="234" y="206" font-family="Georgia,serif" font-size="9" fill="rgba(200,240,220,0.65)" font-style="italic">because it was just right there." — Age 21</text></svg></div>
+        <figcaption>Resource and counseling booking flow — campus therapy slots bookable directly in-app, removing the waitlist friction that was the single biggest reported barrier to seeking help.</figcaption>
+      </figure>
+    </div>
+    <div class="tags">
+      <span class="tag">UX Research</span><span class="tag">Mobile Design</span><span class="tag">Figma</span><span class="tag">Usability Testing</span><span class="tag">Information Architecture</span><span class="tag">Health & Wellness</span>
+    </div>
+  </section>
+
+  <div class="nav-btns">
+    <a href="case-study.html" class="nav-btn">← Lenovo Redesign</a>
+    <a href="case-study-fintech.html" class="nav-btn">FinTrack Dashboard →</a>
+  </div>
+</main>
+
+<footer><div class="foot-copy">© 2026 Ayah Abdulkareem · UX/UI & Product Designer · Charlotte, NC</div></footer>
+</body>
+</html>

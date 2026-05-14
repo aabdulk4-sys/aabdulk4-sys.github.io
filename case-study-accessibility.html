@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Accessibility Audit — Ayah Abdulkareem</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--ink:#111210;--stone:#F7F5F0;--white:#FDFCF9;--border:#E2DDD4;--muted:#706E68;--light:#A09D96;--text:#2A2A28;--accent:#4A3F7A;--accent2:#352D5E;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;}
+img{max-width:100%;display:block;}
+nav{position:sticky;top:0;z-index:100;background:rgba(253,252,249,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}
+.nav-back{font-size:12px;font-weight:500;color:var(--accent2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}
+.hero{background:linear-gradient(135deg,#EDEAF5 0%,#F7F5F0 100%);padding:6rem 2.5rem 4rem;text-align:center;border-bottom:1px solid var(--border);}
+.hero-label{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:10px;}
+.hero-label::before,.hero-label::after{content:'';width:20px;height:1px;background:var(--accent2);}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);color:var(--ink);line-height:1.0;margin-bottom:1rem;}
+.hero h1 em{font-style:italic;color:var(--accent);}
+.hero-sub{font-size:16px;color:var(--muted);font-weight:300;max-width:580px;margin:0 auto 2.5rem;}
+.meta-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.meta-item{text-align:center;}
+.meta-label{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--light);margin-bottom:3px;}
+.meta-val{font-size:14px;font-weight:500;color:var(--text);}
+.main{max-width:820px;margin:0 auto;padding:4rem 2rem;}
+.section{margin-bottom:4rem;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.75rem;display:flex;align-items:center;gap:10px;}
+.section-label::before{content:'';width:18px;height:1px;background:var(--accent2);}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--ink);margin-bottom:1.25rem;line-height:1.05;}
+.section p{font-size:15px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1rem;}
+.image-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}
+.image-grid figure{margin:0;}
+.image-grid figure:only-child{grid-column:1/-1;}
+.image-grid figure img{width:100%;height:240px;object-fit:cover;border-radius:6px;border:1px solid var(--border);display:block;}
+.image-grid figcaption{margin-top:0.4rem;font-size:12px;color:var(--light);text-align:center;}
+.callout{background:linear-gradient(135deg,#EDEAF5,#E8E4F2);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:1.5rem 1.75rem;margin:2rem 0;}
+.callout p{color:var(--text);font-size:15px;font-style:italic;margin:0;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;}
+.stat-card{background:#F2F0F9;border:1px solid #D4CFEA;border-radius:6px;padding:1.5rem;text-align:center;}
+.stat-n{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--accent2);line-height:1;}
+.stat-l{font-size:12px;color:var(--muted);margin-top:4px;font-weight:300;}
+.issue-list{display:flex;flex-direction:column;gap:0;margin:2rem 0;}
+.issue-row{display:grid;grid-template-columns:80px 1fr auto;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:start;}
+.issue-row:first-child{border-top:1px solid var(--border);}
+.issue-severity{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;text-align:center;}
+.sev-critical{background:#FDEAEA;color:#C0392B;}
+.sev-major{background:#FEF5E4;color:#9B6700;}
+.sev-minor{background:#EAF5EA;color:#1B7340;}
+.issue-title{font-size:14px;font-weight:600;color:var(--text);}
+.issue-desc{font-size:13px;color:var(--muted);margin-top:3px;font-weight:300;}
+.issue-wcag{font-size:10px;font-weight:600;letter-spacing:0.08em;color:var(--light);background:var(--stone);border:1px solid var(--border);padding:3px 10px;border-radius:2px;white-space:nowrap;align-self:center;}
+.tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1.5rem;}
+.tag{font-size:11px;font-weight:500;color:var(--muted);background:var(--stone);border:1px solid var(--border);padding:4px 12px;border-radius:2px;}
+.nav-btns{display:flex;gap:1rem;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);}
+.nav-btn{font-size:13px;font-weight:500;color:var(--accent2);text-decoration:none;}
+footer{background:var(--ink);padding:2rem 2.5rem;text-align:center;}
+.foot-copy{font-size:12px;color:rgba(255,255,255,0.25);}
+.mock-img{width:100%;height:240px;border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#EDEAF5,#E5E0F0);}
+.mock-img-label{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent2);opacity:0.6;text-align:center;padding:0 1rem;}
+@media(max-width:600px){.image-grid,.stat-row{grid-template-columns:1fr;}.issue-row{grid-template-columns:1fr;}.hero{padding:4rem 1.5rem 3rem;}.main{padding:3rem 1.25rem;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-name">Ayah Abdulkareem</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Work</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a href="index.html#projects" class="nav-back">← Back to Work</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">UX Research · Accessibility</div>
+  <h1>CityConnect<br><em>Accessibility Audit</em></h1>
+  <p class="hero-sub">A comprehensive WCAG 2.1 accessibility audit and redesign of a municipal government services portal — making city services usable for all residents, including those with visual, motor, and cognitive disabilities.</p>
+  <div class="meta-row">
+    <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">UX Researcher & Designer</div></div>
+    <div class="meta-item"><div class="meta-label">Timeline</div><div class="meta-val">7 Weeks</div></div>
+    <div class="meta-item"><div class="meta-label">Platform</div><div class="meta-val">Web (Desktop & Mobile)</div></div>
+    <div class="meta-item"><div class="meta-label">Tools</div><div class="meta-val">Figma, axe DevTools, NVDA, Lighthouse</div></div>
+  </div>
+</section>
+
+<main class="main">
+
+  <section class="section">
+    <div class="section-label">The Problem</div>
+    <h2>Government services that 26% of residents couldn't actually use.</h2>
+    <p>CityConnect, a fictional municipal portal for permit applications, utility payments, and event registrations, had never undergone an accessibility review. According to the CDC, 26% of U.S. adults live with some form of disability. For a government service — legally required to meet WCAG 2.1 AA standards under Section 508 — this wasn't just a design problem. It was a civil rights issue.</p>
+    <p>A preliminary Lighthouse audit scored the site 31/100 for accessibility. Screen reader testing with NVDA revealed that 6 of the 8 core service flows were completely unusable without a mouse. My goal was to audit the entire site, document every violation, prioritize fixes by severity, and redesign the 3 highest-impact flows to meet WCAG 2.1 AA compliance.</p>
+    <div class="callout"><p>"I tried to pay my water bill online for months. I'm blind and the form wouldn't work with my screen reader, so I had to take a bus to City Hall every single time." — Participant in assistive technology testing session</p></div>
+    <div class="image-grid">
+      <figure>
+        <div class="mock-img" style="background:#100D22;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="600" height="240" fill="#100D22"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(255,100,100,0.5)" letter-spacing="2">LIGHTHOUSE AUDIT — 31/100 BEFORE REDESIGN</text><circle cx="150" cy="130" r="80" fill="none" stroke="rgba(120,100,200,0.08)" stroke-width="2"/><circle cx="150" cy="130" r="65" fill="none" stroke="rgba(255,100,100,0.08)" stroke-width="12"/><circle cx="150" cy="130" r="65" fill="none" stroke="rgba(255,100,100,0.6)" stroke-width="12" stroke-dasharray="126 408" stroke-dashoffset="102" stroke-linecap="round" transform="rotate(-90 150 130)"/><text x="150" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="rgba(255,100,100,0.9)">31</text><text x="150" y="140" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,100,100,0.4)">/100</text><text x="150" y="156" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.35)" letter-spacing="1">ACCESSIBILITY</text><text x="300" y="48" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.5)" font-weight="bold" letter-spacing="1">47 VIOLATIONS FOUND</text><rect x="300" y="56" width="284" height="22" rx="3" fill="rgba(255,100,100,0.1)" stroke="rgba(255,100,100,0.2)" stroke-width="1"/><text x="312" y="65" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.7)">🔴 CRITICAL</text><text x="572" y="65" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.7)">12 issues</text><text x="312" y="73" font-family="Arial" font-size="6" fill="rgba(255,100,100,0.4)">Missing labels, keyboard traps, broken focus</text><rect x="300" y="84" width="284" height="22" rx="3" fill="rgba(255,180,50,0.1)" stroke="rgba(255,180,50,0.2)" stroke-width="1"/><text x="312" y="93" font-family="Arial" font-size="7" fill="rgba(255,180,50,0.7)">🟡 MAJOR</text><text x="572" y="93" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(255,180,50,0.7)">21 issues</text><text x="312" y="101" font-family="Arial" font-size="6" fill="rgba(255,180,50,0.4)">Contrast failures, missing error links</text><rect x="300" y="112" width="284" height="22" rx="3" fill="rgba(52,211,153,0.07)" stroke="rgba(52,211,153,0.15)" stroke-width="1"/><text x="312" y="121" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.6)">🟢 MINOR</text><text x="572" y="121" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.6)">14 issues</text><text x="312" y="129" font-family="Arial" font-size="6" fill="rgba(52,211,153,0.35)">Skip nav, alt text, heading order</text><text x="300" y="160" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.35)" font-weight="bold">POUR ANALYSIS</text><text x="300" y="176" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">Perceivable · 14 violations</text><rect x="440" y="169" width="140" height="6" rx="1" fill="rgba(120,100,200,0.1)"/><rect x="440" y="169" width="40" height="6" rx="1" fill="rgba(255,100,100,0.5)"/><text x="300" y="194" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">Operable · 12 violations</text><rect x="440" y="187" width="140" height="6" rx="1" fill="rgba(120,100,200,0.1)"/><rect x="440" y="187" width="34" height="6" rx="1" fill="rgba(255,100,100,0.5)"/><text x="300" y="212" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">Understandable · 11 violations</text><rect x="440" y="205" width="140" height="6" rx="1" fill="rgba(120,100,200,0.1)"/><rect x="440" y="205" width="31" height="6" rx="1" fill="rgba(255,180,50,0.5)"/><text x="300" y="230" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">Robust · 10 violations</text><rect x="440" y="223" width="140" height="6" rx="1" fill="rgba(120,100,200,0.1)"/><rect x="440" y="223" width="28" height="6" rx="1" fill="rgba(255,180,50,0.5)"/></svg></div>
+        <figcaption>Initial Lighthouse accessibility audit — score of 31/100 with 47 violations flagged, including missing alt text on 23 images, 14 color contrast failures, and 6 unlabeled form fields.</figcaption>
+      </figure>
+      <figure>
+        <div class="mock-img" style="background:#100D22;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="600" height="240" fill="#100D22"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(255,100,100,0.5)" letter-spacing="2">NVDA SCREEN READER TESTING SESSION</text><rect x="16" y="28" width="568" height="24" rx="3" fill="rgba(120,100,200,0.08)" stroke="rgba(120,100,200,0.15)" stroke-width="1"/><text x="30" y="38" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.5)" letter-spacing="1">NVDA + CHROME · WINDOWS 11 · KEYBOARD ONLY</text><text x="30" y="47" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.3)">Testing 8 core service flows — pay bill, apply permit, register event, report issue...</text><text x="16" y="72" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.4)" font-weight="bold">TASK RESULTS</text><rect x="16" y="80" width="568" height="22" rx="2" fill="rgba(255,100,100,0.08)" stroke="rgba(255,100,100,0.15)" stroke-width="1"/><text x="28" y="90" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.6)">✗ Utility Bill Payment</text><text x="572" y="90" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.5)">FAILED — unlabeled form fields</text><text x="28" y="99" font-family="Arial" font-size="6" fill="rgba(255,100,100,0.3)">Screen reader: "unlabeled edit field, unlabeled edit field, unlabeled edit field..."</text><rect x="16" y="108" width="568" height="22" rx="2" fill="rgba(255,100,100,0.08)" stroke="rgba(255,100,100,0.15)" stroke-width="1"/><text x="28" y="118" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.6)">✗ Permit Application</text><text x="572" y="118" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.5)">FAILED — keyboard focus trapped in modal</text><text x="28" y="127" font-family="Arial" font-size="6" fill="rgba(255,100,100,0.3)">Could not dismiss confirmation dialog — stuck in loop</text><rect x="16" y="136" width="568" height="22" rx="2" fill="rgba(255,100,100,0.08)" stroke="rgba(255,100,100,0.15)" stroke-width="1"/><text x="28" y="146" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.6)">✗ Event Registration</text><text x="572" y="146" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.5)">FAILED — errors not announced</text><rect x="16" y="164" width="568" height="22" rx="2" fill="rgba(255,180,50,0.07)" stroke="rgba(255,180,50,0.15)" stroke-width="1"/><text x="28" y="174" font-family="Arial" font-size="7" fill="rgba(255,180,50,0.6)">~ Report an Issue</text><text x="572" y="174" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(255,180,50,0.5)">PARTIAL — completed with difficulty</text><rect x="16" y="192" width="568" height="22" rx="2" fill="rgba(52,211,153,0.07)" stroke="rgba(52,211,153,0.15)" stroke-width="1"/><text x="28" y="202" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.6)">✓ Contact Us (basic form)</text><text x="572" y="202" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.5)">PASSED</text><text x="16" y="230" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.4)">Result: 6 of 8 core service flows completely unusable without a mouse · 0 of 4 AT users completed utility payment</text></svg></div>
+        <figcaption>NVDA screen reader session documentation — 6 of 8 core service flows failed entirely without mouse input, with tab order jumping unpredictably and form errors not announced to assistive technology.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Audit Process</div>
+    <h2>Systematic evaluation across POUR principles</h2>
+    <p>I structured the audit around WCAG 2.1's four POUR principles — Perceivable, Operable, Understandable, and Robust — using axe DevTools for automated scanning and manual testing with NVDA (screen reader), keyboard-only navigation, and 400% zoom for low-vision simulation.</p>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-n">47</div><div class="stat-l">total accessibility violations found</div></div>
+      <div class="stat-card"><div class="stat-n">12</div><div class="stat-l">critical violations blocking assistive technology users</div></div>
+      <div class="stat-card"><div class="stat-n">31/100</div><div class="stat-l">initial Lighthouse accessibility score</div></div>
+    </div>
+    <p>I prioritized violations into three tiers — Critical (blocks task completion), Major (significantly impairs use), and Minor (inconvenience without blocking) — and documented each with the specific WCAG criterion, user impact, and recommended fix.</p>
+    <div class="issue-list">
+      <div class="issue-row">
+        <div class="issue-severity sev-critical">Critical</div>
+        <div><div class="issue-title">Form fields missing programmatic labels</div><div class="issue-desc">6 form fields (permit application, utility payment) had no associated <code>&lt;label&gt;</code> elements — screen readers announced them as "unlabeled edit field"</div></div>
+        <div class="issue-wcag">WCAG 1.3.1</div>
+      </div>
+      <div class="issue-row">
+        <div class="issue-severity sev-critical">Critical</div>
+        <div><div class="issue-title">Keyboard focus trap in modal dialogs</div><div class="issue-desc">Payment confirmation modals trapped keyboard focus, making it impossible for keyboard-only users to dismiss or complete the transaction</div></div>
+        <div class="issue-wcag">WCAG 2.1.2</div>
+      </div>
+      <div class="issue-row">
+        <div class="issue-severity sev-major">Major</div>
+        <div><div class="issue-title">Color contrast ratio below 4.5:1</div><div class="issue-desc">14 instances of text failing minimum contrast — including the primary navigation links at 2.8:1 against the gray header background</div></div>
+        <div class="issue-wcag">WCAG 1.4.3</div>
+      </div>
+      <div class="issue-row">
+        <div class="issue-severity sev-major">Major</div>
+        <div><div class="issue-title">Error messages not associated with fields</div><div class="issue-desc">Form validation errors displayed visually but not programmatically linked to input fields — screen reader users received no error feedback</div></div>
+        <div class="issue-wcag">WCAG 3.3.1</div>
+      </div>
+      <div class="issue-row">
+        <div class="issue-severity sev-minor">Minor</div>
+        <div><div class="issue-title">Missing skip navigation link</div><div class="issue-desc">No "skip to main content" link — keyboard users must tab through all 18 navigation items on every page load</div></div>
+        <div class="issue-wcag">WCAG 2.4.1</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Redesign</div>
+    <h2>Accessible by default, not as an afterthought</h2>
+    <p>I redesigned the three highest-impact flows — utility bill payment, permit application, and event registration — applying all critical and major fixes. Every form field received a visible, programmatically associated label. Focus management was implemented for all modal dialogs. Color contrast was brought to a minimum 4.5:1 ratio across all text. Error messages were linked to their fields using aria-describedby.</p>
+    <p>Beyond compliance, I simplified the information architecture of all three flows — reducing average steps from 6.3 to 3.8 — because accessibility and usability are not separate problems. Cognitive load reduction helps everyone, not just users with cognitive disabilities.</p>
+    <div class="image-grid">
+      <figure>
+        <div class="mock-img" style="background:#100D22;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="600" height="240" fill="#100D22"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(52,211,153,0.5)" letter-spacing="2">REDESIGNED FORM — WCAG 2.1 AA COMPLIANT</text><rect x="16" y="28" width="350" height="200" rx="5" fill="rgba(120,100,200,0.05)" stroke="rgba(160,140,220,0.15)" stroke-width="1"/><text x="30" y="48" font-family="Arial" font-size="9" fill="rgba(200,190,240,0.7)" font-weight="bold">Utility Bill Payment</text><text x="30" y="63" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.35)">All fields required</text><text x="30" y="82" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.5)">Account Number <span style="color:red">*</span></text><rect x="30" y="88" width="322" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(160,140,220,0.5)" stroke-width="2"/><text x="40" y="100" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.2)">Enter your 8-digit account number</text><text x="355" y="100" text-anchor="end" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.6)">← Focused</text><text x="30" y="120" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.5)">Payment Amount</text><rect x="30" y="126" width="322" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(120,100,200,0.3)" stroke-width="1"/><text x="40" y="138" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.2)">$0.00</text><text x="30" y="158" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.5)">Card Number</text><rect x="30" y="164" width="322" height="18" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,100,100,0.5)" stroke-width="1"/><text x="30" y="194" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.7)">⚠ Please enter a valid card number</text><text x="30" y="204" font-family="Arial" font-size="6" fill="rgba(255,100,100,0.4)">Announced by screen reader via aria-describedby</text><rect x="30" y="210" width="100" height="14" rx="2" fill="rgba(160,140,220,0.5)"/><text x="80" y="220" text-anchor="middle" font-family="Arial" font-size="7" fill="white">Submit Payment</text><rect x="384" y="28" width="200" height="200" rx="4" fill="rgba(52,211,153,0.04)" stroke="rgba(52,211,153,0.1)" stroke-width="1"/><text x="396" y="46" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.4)" font-weight="bold">FIXES APPLIED</text><text x="396" y="64" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">✓ &lt;label for&gt; on every field</text><text x="396" y="80" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">✓ 3:1 focus indicator contrast</text><text x="396" y="96" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">✓ aria-describedby errors</text><text x="396" y="112" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">✓ Error role="alert"</text><text x="396" y="128" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">✓ Tab order logical</text><text x="396" y="144" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.25)">✓ Skip nav link added</text><text x="396" y="164" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.4)" font-weight="bold">WCAG CRITERIA MET</text><text x="396" y="180" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.2)">1.3.1 Info Relationships</text><text x="396" y="196" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.2)">2.1.2 No Keyboard Trap</text><text x="396" y="212" font-family="Arial" font-size="7" fill="rgba(255,255,255,0.2)">3.3.1 Error Identification</text></svg></div>
+        <figcaption>Redesigned utility payment form — every field has a visible label, focus indicators meet 3:1 contrast ratio, and error messages are programmatically linked to their fields and announced by screen readers.</figcaption>
+      </figure>
+      <figure>
+        <div class="mock-img" style="background:#100D22;padding:0;"><svg width="100%" height="240" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="600" height="240" fill="#100D22"/><text x="16" y="18" font-family="Arial" font-size="8" fill="rgba(52,211,153,0.5)" letter-spacing="2">LIGHTHOUSE SCORE: 31 → 94</text><text x="130" y="40" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(255,100,100,0.6)">BEFORE</text><circle cx="130" cy="120" r="70" fill="none" stroke="rgba(255,100,100,0.06)" stroke-width="12"/><circle cx="130" cy="120" r="70" fill="none" stroke="rgba(255,100,100,0.6)" stroke-width="12" stroke-dasharray="136 440" stroke-dashoffset="110" stroke-linecap="round" transform="rotate(-90 130 120)"/><text x="130" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="rgba(255,100,100,0.85)">31</text><text x="130" y="130" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(255,100,100,0.4)">/100</text><text x="130" y="148" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.3)">47 violations</text><text x="370" y="40" text-anchor="middle" font-family="Arial" font-size="9" fill="rgba(52,211,153,0.6)">AFTER</text><circle cx="370" cy="120" r="70" fill="none" stroke="rgba(52,211,153,0.06)" stroke-width="12"/><circle cx="370" cy="120" r="70" fill="none" stroke="rgba(134,239,172,0.7)" stroke-width="12" stroke-dasharray="414 440" stroke-dashoffset="110" stroke-linecap="round" transform="rotate(-90 370 120)"/><text x="370" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="rgba(134,239,172,0.9)">94</text><text x="370" y="130" text-anchor="middle" font-family="Arial" font-size="8" fill="rgba(52,211,153,0.4)">/100</text><text x="370" y="148" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.3)">WCAG 2.1 AA</text><text x="500" y="60" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.4)" font-weight="bold">AT TESTING</text><text x="500" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="rgba(134,239,172,0.85)">4/4</text><text x="500" y="96" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.4)">users completed</text><text x="500" y="108" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(52,211,153,0.4)">payment task</text><text x="500" y="132" text-anchor="middle" font-family="Arial" font-size="7" fill="rgba(255,100,100,0.4)">(was 0/4)</text><text x="16" y="210" font-family="Arial" font-size="7" fill="rgba(160,140,220,0.35)">12 critical + 21 major violations resolved · Avg flow steps: 6.3 → 3.8 · Section 508 compliant</text></svg></div>
+        <figcaption>Lighthouse accessibility score before and after — 31/100 to 94/100 after implementing all critical and major fixes across the three priority service flows.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Outcomes</div>
+    <h2>94/100 — and more importantly, real people could use it.</h2>
+    <p>Post-redesign Lighthouse scoring reached 94/100 across the three priority flows. But the more meaningful metric: in follow-up testing with 4 assistive technology users — 2 using screen readers, 1 keyboard-only, 1 with low vision — all 4 successfully completed the utility payment flow independently, compared to 0 of 4 in the baseline test.</p>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-n">94/100</div><div class="stat-l">Lighthouse accessibility score (up from 31)</div></div>
+      <div class="stat-card"><div class="stat-n">4 of 4</div><div class="stat-l">AT users completed payment flow (up from 0 of 4)</div></div>
+      <div class="stat-card"><div class="stat-n">3.8</div><div class="stat-l">avg steps per flow (down from 6.3)</div></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Accessibility</span><span class="tag">WCAG 2.1</span><span class="tag">Screen Reader Testing</span><span class="tag">Government UX</span><span class="tag">Figma</span><span class="tag">Inclusive Design</span>
+    </div>
+  </section>
+
+  <div class="nav-btns">
+    <a href="case-study-ecommerce.html" class="nav-btn">← ShopLocal Redesign</a>
+    <a href="case-study.html" class="nav-btn">Lenovo Redesign →</a>
+  </div>
+</main>
+
+<footer><div class="foot-copy">© 2026 Ayah Abdulkareem · UX/UI & Product Designer · Charlotte, NC</div></footer>
+</body>
+</html>
